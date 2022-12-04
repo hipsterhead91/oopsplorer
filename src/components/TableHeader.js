@@ -26,12 +26,6 @@ function TableHeader(props) {
     }
   }
 
-  // var collator = new Intl.Collator(undefined, {numeric: true, sensitivity: 'base'});
-  // var myArray = ['1_Document', '11_Document', '2_Document'];
-  // console.log(myArray.sort(collator.compare));
-
-  
-
   return (
     <div className="validators__header">
 
