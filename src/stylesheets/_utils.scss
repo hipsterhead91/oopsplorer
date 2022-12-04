@@ -1,0 +1,94 @@
+// ПЕРЕМЕННЫЕ
+
+$whitest:           #ffffff; // максимально белый, если потребуется
+$white:             #fafafa; // "рабочий" белый, более приятный глазу
+$gray-lightest:     #dcdcdc;
+$gray-lighter:      #bebebe;
+$gray-light:        #a0a0a0;
+$gray:              #828282;
+$gray-dark:         #646464;
+$gray-darker:       #464646;
+$gray-darkest:      #282828;
+$black:             #0f0f0f; // "рабочий" чёрный, более приятный глазу
+$blackest:          #000000; // максимально чёрный, если потребуется
+
+$color-main:        #0d6573;
+$color-second:      #a34061;
+$color-accent:      #e8c413;
+$color-background:  #add8e6;
+
+$screen-xxl:           1400px;
+$screen-xl:            1200px;
+$screen-lg:             992px;
+$screen-md:             768px;
+$screen-sm:             576px;
+$screen-xs:             480px;
+$screen-xxs:            360px;
+
+
+// ШАБЛОНЫ
+
+%text-thin {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 100;
+}
+
+%text-extralight {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 200;
+}
+
+%text-light {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 300;
+}
+
+%text-regular {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+%text-medium {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+}
+
+%text-semibold {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+}
+
+%text-bold {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+}
+
+%text-extrabold {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 800;
+}
+
+%text-black {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 900;
+}
+
+
+
+// МИКСИНЫ (ПРИМЕСИ)
+
+@mixin bg-image($link, $position: center, $size: cover, $repeat: no-repeat) {
+  background-image: url($link);
+  background-position: $position;
+  background-size: $size;
+  background-repeat: $repeat;
+}

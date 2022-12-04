@@ -1,0 +1,48 @@
+.not-found {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.not-found__heading {
+  position: relative;
+  top: 0;
+  left: -8px;
+  margin: 20vh 0 8px 0;
+  font-weight: 900;
+  font-size: 248px;
+  line-height: 100%;
+}
+
+.not-found__paragraph {
+  font-weight: 600;
+  font-size: 18px;
+  color: $color-main;
+
+  &:not(:last-child) {
+    margin: 0 0 8px 0;
+  }
+}
+
+.not-found__link {
+  position: relative;
+  left: -20px;
+  margin: 48px 0 0 0;
+  font-weight: 600;
+  font-size: 18px;
+  text-decoration: none;
+  text-align: end;
+  color: $color-second;
+  transition: linear 0.2s;
+
+  span {
+    position: relative;
+    top: 1px;
+    margin: 0 2px 0 0;
+    font-weight: 700;
+    font-size: 24px;
+  }
+
+  &:hover {
+    color: $gray-darkest;
+  }
+}

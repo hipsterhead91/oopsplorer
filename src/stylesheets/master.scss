@@ -1,0 +1,19 @@
+// ШРИФТЫ
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+// SCSS ПЕРЕМЕННЫЕ, ШАБЛОНЫ, МИКСИНЫ
+@import 'utils';
+
+// СБРОС СТИЛЕЙ
+@import '../../node_modules/normalize-scss/sass/normalize';
+@import 'default-styles';
+
+// БЛОКИ
+@import 'blocks/app';
+@import 'blocks/header';
+@import 'blocks/footer';
+@import 'blocks/homepage';
+@import 'blocks/not-found';
+@import 'blocks/chain';
+@import 'blocks/validators';
+@import 'blocks/validator';
