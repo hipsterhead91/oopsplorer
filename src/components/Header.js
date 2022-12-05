@@ -28,6 +28,7 @@ function Header(props) {
   const switchChain = (chain) => {
     props.setCurrentChain(chain);
     hideChainList();
+    window.scrollTo(0, 0); // прокрутка страницы наверх
   }
 
   const chainText = (currentChain === null) ? 'Chain is not selected' : `${capitalize(currentChain.name)} ${currentChain.isMain ? 'Mainnet' : 'Testnet'}`;

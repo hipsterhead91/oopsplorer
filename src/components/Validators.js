@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useOutletContext } from "react-router-dom";
+import { useOutletContext, Outlet } from "react-router-dom";
 
 import { sortBytokens, getAdditionalProps, filterByActivity, getRanks } from "../utils/editingValidators";
 
@@ -14,7 +14,6 @@ function Validators() {
   const [inactiveValidators, setInactiveValidators] = useState([]);
   const [currentValidators, setCurrentValidators] = useState([]);
   const [isCurrentSetActive, setIsCurrentSetActive] = useState(true);
-  const [order, setOrder] = React.useState('ASC');
 
   // ПОЛУЧАЕМ ВСЕХ ВАЛИДАТОРОВ, СОРТИРУЕМ И ДОБАВЛЯЕМ ПОЛЯ
   // Примечание: вообще, мне в зависимостях достаточно одного totalBonded, но VSCode подсказывает, что 
@@ -63,6 +62,7 @@ function Validators() {
 
   return (
     <div className="validators">
+      <Outlet context={[chain, allValidators]} />
       <div className="validators__switcher">
         <button onClick={switchToActive} className={activeButtonStyle}>Active</button>
         <button onClick={switchToInactive} className={inactiveButtonStyle}>Inactive</button>

@@ -1,0 +1,184 @@
+.validator { 
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba($color-background, 0.5);
+}
+
+.validator__container {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 1000px;
+  padding: 40px 160px 60px 32px;
+  background-color: $white;
+  border-radius: 8px;
+}
+
+.validator__close-button {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  font-size: 48px;
+  line-height: 100%;
+  color: $color-second;
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.validator__card {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 80px calc(100% - 80px);
+  grid-column-gap: 20px;
+  grid-row-gap: 32px;
+}
+
+.validator__avatar {
+  width: 80px;
+  height: 80px;
+  background-color: $gray-lightest;
+  border-radius: 50%;
+}
+
+.validator__info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.validator__header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.validator__moniker {
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 100%;
+  color: $gray-darker;
+}
+  
+.validator__rank {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 100%;
+  color: $gray-lighter;
+  text-align: center;
+}
+
+.validator__valoper {
+  margin: 6px 0 6px 0;
+  font-size: 16px;
+  color: $gray-darker;
+}
+
+.validator__statuses {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.validator__activity {
+  padding: 4px 8px 4px 8px;
+  margin: 0 8px 0 0;
+  font-size: 14px;
+  line-height: 100%;
+  color: rgba($color-main, 0.7);
+  background-color: rgba($color-background, 0.4);
+  border-radius: 4px;
+
+  &_inactive {
+    color: $gray-light;
+    background-color: $gray-lightest;
+  }
+}
+
+.validator__bond {
+  padding: 4px 8px 4px 8px;
+  margin: 0 8px 0 0;
+  font-size: 14px;
+  line-height: 100%;
+  color: rgba($color-main, 0.7);
+  background-color: rgba($color-background, 0.4);
+  border-radius: 4px;
+
+  &_unbonded {
+    color: $gray-light;
+    background-color: $gray-lightest;
+  }
+
+  &_unbonding {
+    color: #a19108;
+    background-color: rgba($color-accent, 0.3);
+  }
+}
+
+.validator__jail {
+  padding: 4px 8px 4px 8px;
+  margin: 0 8px 0 0;
+  font-size: 14px;
+  line-height: 100%;
+  color: rgba($color-second, 0.6);
+  background-color: rgba($color-second, 0.2);
+  border-radius: 4px;
+
+  &_hidden {
+    display: none;
+  }
+}
+
+.validator__warning {
+  padding: 4px 8px 4px 8px;
+  font-size: 14px;
+  line-height: 100%;
+  color: rgba($color-second, 0.6);
+  background-color: rgba($color-second, 0.2);
+  border-radius: 4px;
+
+  &_hidden {
+    display: none;
+  }
+}
+
+.validator__data {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 180px calc(100% - 180px);
+  grid-row-gap: 10px;
+}
+
+.validator__data-heading {
+  font-weight: 500;
+  font-size: 16px;
+  color: $gray-darker;
+}
+
+.validator__data-text {
+  font-weight: 400;
+  font-size: 16px;
+  color: $gray-darker;
+}
+
+.validator__denom {
+  margin: 0 0 0 4px;
+  font-size: 14px;
+  color: $gray-light;
+}
+
+.validator__data-link {
+  font-weight: 400;
+  font-size: 16px;
+  color: $color-main;
+}

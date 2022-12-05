@@ -5,6 +5,8 @@ function TableRow(props) {
 
   const validator = props.validators;
   const chain = props.chain;
+  const network = chain.isMain ? 'mainnet' : 'testnet';
+  const chainPath = chain.name + '-' + network;
 
   // ДАННЫЕ ДЛЯ РЕНДЕРА И СТИЛИ
   const activity = (validator.status_short === 'Bonded') ? 'Active' : 'Inactive';
@@ -26,8 +28,8 @@ function TableRow(props) {
           <div className="validators__avatar"></div>
           <div className="validators__info">
             <div className="validators__main-info">
-              <span className="validators__rank">#{validator.rank}</span>
-              <Link className="validators__moniker">{validator.description.moniker}</Link>
+              <span className="validators__rank">#{validator.rank.toString().padStart(3, '0')}</span>
+              <Link to={`/${chainPath}/validators/${validator.operator_address}`} state={validator} className="validators__moniker">{validator.description.moniker}</Link>
             </div>
             <div className="validators__statuses">
               <span className={activityStyle}>{activity}</span>

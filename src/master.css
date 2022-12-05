@@ -478,6 +478,7 @@ html {
 }
 
 .validators {
+  position: relative;
   width: 100%;
 }
 
@@ -851,4 +852,222 @@ html {
   font-size: 16px;
   line-height: 100%;
   color: #646464;
+}
+
+.validator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  width: 100vw;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: rgba(173, 216, 230, 0.5);
+}
+
+.validator__container {
+  position: relative;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  max-width: 1000px;
+  padding: 40px 160px 60px 32px;
+  background-color: #fafafa;
+  border-radius: 8px;
+}
+
+.validator__close-button {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  font-size: 48px;
+  line-height: 100%;
+  color: #a34061;
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.validator__card {
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 80px calc(100% - 80px);
+      grid-template-columns: 80px calc(100% - 80px);
+  grid-column-gap: 20px;
+  grid-row-gap: 32px;
+}
+
+.validator__avatar {
+  width: 80px;
+  height: 80px;
+  background-color: #dcdcdc;
+  border-radius: 50%;
+}
+
+.validator__info {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.validator__header {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.validator__moniker {
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 100%;
+  color: #464646;
+}
+
+.validator__rank {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 100%;
+  color: #bebebe;
+  text-align: center;
+}
+
+.validator__valoper {
+  margin: 6px 0 6px 0;
+  font-size: 16px;
+  color: #464646;
+}
+
+.validator__statuses {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.validator__activity {
+  padding: 4px 8px 4px 8px;
+  margin: 0 8px 0 0;
+  font-size: 14px;
+  line-height: 100%;
+  color: rgba(13, 101, 115, 0.7);
+  background-color: rgba(173, 216, 230, 0.4);
+  border-radius: 4px;
+}
+
+.validator__activity_inactive {
+  color: #a0a0a0;
+  background-color: #dcdcdc;
+}
+
+.validator__bond {
+  padding: 4px 8px 4px 8px;
+  margin: 0 8px 0 0;
+  font-size: 14px;
+  line-height: 100%;
+  color: rgba(13, 101, 115, 0.7);
+  background-color: rgba(173, 216, 230, 0.4);
+  border-radius: 4px;
+}
+
+.validator__bond_unbonded {
+  color: #a0a0a0;
+  background-color: #dcdcdc;
+}
+
+.validator__bond_unbonding {
+  color: #a19108;
+  background-color: rgba(232, 196, 19, 0.3);
+}
+
+.validator__jail {
+  padding: 4px 8px 4px 8px;
+  margin: 0 8px 0 0;
+  font-size: 14px;
+  line-height: 100%;
+  color: rgba(163, 64, 97, 0.6);
+  background-color: rgba(163, 64, 97, 0.2);
+  border-radius: 4px;
+}
+
+.validator__jail_hidden {
+  display: none;
+}
+
+.validator__warning {
+  padding: 4px 8px 4px 8px;
+  font-size: 14px;
+  line-height: 100%;
+  color: rgba(163, 64, 97, 0.6);
+  background-color: rgba(163, 64, 97, 0.2);
+  border-radius: 4px;
+}
+
+.validator__warning_hidden {
+  display: none;
+}
+
+.validator__data {
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 180px calc(100% - 180px);
+      grid-template-columns: 180px calc(100% - 180px);
+  grid-row-gap: 10px;
+}
+
+.validator__data-heading {
+  font-weight: 500;
+  font-size: 16px;
+  color: #464646;
+}
+
+.validator__data-text {
+  font-weight: 400;
+  font-size: 16px;
+  color: #464646;
+}
+
+.validator__denom {
+  margin: 0 0 0 4px;
+  font-size: 14px;
+  color: #a0a0a0;
+}
+
+.validator__data-link {
+  font-weight: 400;
+  font-size: 16px;
+  color: #0d6573;
 }

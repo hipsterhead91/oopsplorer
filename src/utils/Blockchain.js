@@ -72,6 +72,17 @@ class Blockchain {
     }
   }
 
+  // ПОСЛЕДНИЙ БЛОК
+  async getLatestBlock() {
+    const response = await fetch(`${this._baseUrl}/cosmos/base/tendermint/v1beta1/blocks/latest`);
+    if (response.ok) {
+      const result = await response.json();
+      return result;
+    } else {
+      return Promise.reject(`Something went wrong: ${response.status}`)
+    }
+  }
+
 };
 
 export default Blockchain;
