@@ -1,19 +1,31 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useOutletContext, Link } from "react-router-dom";
+import Keybase from "../utils/Keybase";
+import noAvatar from "../images/no-avatar.png";
 
 function Validator() {
 
   const currentValoper = useParams().valoper; // из ссылки в браузерной строке получаем адрес текущего валидатора
   const [chain, allValidators] = useOutletContext([]);
   const [currentValidator, setCurrentValidator] = useState();
+  const [avatar, setAvatar] = useState(noAvatar);
   const network = chain.isMain ? 'mainnet' : 'testnet';
   const chainPath = chain.name + '-' + network;
+  const keybase = new Keybase();
 
   // ПОЛУЧАЕМ ОБЪЕКТ ТЕКУЩЕГО ВАЛИДАТОРА
   useEffect(() => {
     const validator = allValidators.find(val => val.operator_address === currentValoper);
     setCurrentValidator(validator);
-  }, [chain, allValidators])
+  }, [chain, allValidators, currentValoper])
+
+  // ПОЛУЧАЕМ АВАТАР
+  useEffect(() => {
+    if (currentValidator && currentValidator.description.identity) {
+      keybase.getAvatar(currentValidator.description.identity)
+        .then(result => setAvatar(result))
+    }
+  }, [currentValidator])
 
   // ДАННЫЕ ДЛЯ РЕНДЕРА И СТИЛИ
   const moniker = (currentValidator === undefined) ? '' : currentValidator.description.moniker;
@@ -43,7 +55,7 @@ function Validator() {
     if (currentValidator === undefined || currentValidator.description.website === '') {
       return <p className="validator__data-text">—</p>
     } else {
-      return <a href={currentValidator.description.website} className="validator__data-link">{currentValidator.description.website}</a>
+      return <a href={currentValidator.description.website} target="_blank" className="validator__data-link">{currentValidator.description.website}</a>
     }
   }
 
@@ -52,7 +64,7 @@ function Validator() {
       <div className="validator__container">
         <Link to={`/${chainPath}/validators`} className="validator__close-button">&#10006;</Link>
         <div className="validator__card">
-          <div className="validator__avatar" />
+          <img src={avatar} alt="" className="validator__avatar" />
           <div className="validator__header">
             <h1 className="validator__moniker">{moniker}</h1>
             <span className="validator__valoper">{valoper}</span>

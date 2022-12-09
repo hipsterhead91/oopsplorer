@@ -33,6 +33,11 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
+  transition: linear 0.3s;
+
+  &:hover {
+    color: $gray-darker;
+  }
 }
 
 .validator__card {

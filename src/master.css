@@ -485,7 +485,7 @@ html {
 .validators__switcher {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  width: calc((100% - 24px - 24px - 24px) / 4);
+  width: 20%;
   height: 40px;
   margin: 0 0 20px 0;
   border: 2px solid #a34061;
@@ -735,6 +735,12 @@ html {
   text-decoration: none;
   overflow: hidden;
   text-overflow: ellipsis;
+  -webkit-transition: linear 0.2s;
+  transition: linear 0.2s;
+}
+
+.validators__moniker:hover {
+  color: #a34061;
 }
 
 .validators__statuses {
@@ -899,6 +905,12 @@ html {
   background-color: transparent;
   border: none;
   cursor: pointer;
+  -webkit-transition: linear 0.3s;
+  transition: linear 0.3s;
+}
+
+.validator__close-button:hover {
+  color: #464646;
 }
 
 .validator__card {

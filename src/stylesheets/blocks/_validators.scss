@@ -5,7 +5,7 @@
 
 .validators__switcher {
   box-sizing: border-box;
-  width: calc((100% - 24px - 24px - 24px) / 4);
+  width: 20%;
   height: 40px;
   margin: 0 0 20px 0;
   border: 2px solid $color-second;
@@ -194,6 +194,11 @@
   text-decoration: none;
   overflow: hidden;
   text-overflow: ellipsis;
+  transition: linear 0.2s;
+
+  &:hover {
+    color: $color-second;
+  }
 }
 
 .validators__statuses {

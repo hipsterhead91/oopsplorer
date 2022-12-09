@@ -25,7 +25,7 @@ function Validators() {
         const updated = sorted.map(validator => getAdditionalProps(chain, validator, totalBonded, chain.decimals));
         setAllValidators(updated);
       })
-  }, [chain, chainApi, totalBonded]);
+  }, [chain]);
 
   // ДЕЛИМ ВАЛИДАТОРОВ НА АКТИВНЫХ И НЕАКТИВНЫХ
   useEffect(() => {

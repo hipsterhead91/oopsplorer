@@ -83,6 +83,27 @@ class Blockchain {
     }
   }
 
+  // КОНКРЕТНЫЙ БЛОК
+  async getBlock(blockHeight) {
+    const response = await fetch(`${this._baseUrl}/cosmos/base/tendermint/v1beta1/blocks/${blockHeight}`);
+    if (response.ok) {
+      const result = await response.json();
+      return result;
+    } else {
+      return Promise.reject(`Something went wrong: ${response.status}`)
+    }
+  }
+
+  // КОНКРЕТНАЯ ТРАНЗАКЦИЯ
+  async getTransaction(transactionHash) {
+    const response = await fetch(`${this._baseUrl}/cosmos/tx/v1beta1/txs/${transactionHash}`);
+    if (response.ok) {
+      const result = await response.json();
+      return result;
+    } else {
+      return Promise.reject(`Something went wrong: ${response.status}`)
+    }
+  }
 };
 
 export default Blockchain;

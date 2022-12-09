@@ -32,29 +32,27 @@ function Chain(props) {
   // делится. Из-за этого полученные значения приходится обрабатывать по-разному, дополнительно обрезая монеты в обороте.
 
   // ПОЛУЧАЕМ ВСЕ МОНЕТЫ В ОБОРОТЕ
-  const setCirculatingTokens = () => {
+  useEffect(() => {
     chainApi.getCirculatingSupply()
       .then(result => {
         const cutted = result.slice(0, -(chain.decimals + 1)); // обрезаем строку на лишние нули плюс символ точки
         setCirculatingSupply(cutted);
       })
-  }
+  }, [chain])
 
   // ПОЛУЧАЕМ СУММУ ВСЕХ ЗАСТЕЙКАННЫХ МОНЕТ
-  const setStakedTokens = () => {
+  useEffect(() => {
     chainApi.getBondedTokens()
-      .then(result => setTotalBonded(result));
-  }
+      .then(result => setTotalBonded(result))
+  }, [chain])
 
   // ПОЛУЧАЕМ ПОСЛЕДНИЙ БЛОК
   const setLatestBlock = () => {
     chainApi.getLatestBlock()
-      .then(result => {
-        setBlockHeight(result.block.last_commit.height)
-      })
+      .then(result => setBlockHeight(result.block.last_commit.height))
   };
 
-  // ОБНОВЛЯЕМ ДАННЫЕ 
+  // ОБНОВЛЯЕМ ПОСЛЕДНИЙ БЛОК ПО ТАЙМЕРУ
   // Примечание: return в конце хука необходим для того, чтобы выполнить некий код при размонтировании компонента.
   // В данном случае он сбрасывает мои таймеры - без этого при переключении между разными сетями дисплей с данными
   // начинали лагать, показывая попеременно информацию то из одной, то из другой сети. Как я понял, это происходило
@@ -62,17 +60,9 @@ function Chain(props) {
   // между сетями/компонентами тут не поможет - оттуда и глюки. Странная тема, но интересная - буду знать.
   useEffect(() => {
     setLatestBlock();
-    setStakedTokens();
-    setCirculatingTokens();
     let latestBlockTimer = setInterval(setLatestBlock, 2000); // 2 сек.
-    let stakedTokensTimer = setInterval(setStakedTokens, 10000); // 10 сек.
-    let circulatingTokensTimer = setInterval(setCirculatingTokens, 300000); // 5 мин.
-    // Примечание: токены в обороте обновляются так редко (если я правильно думаю, раз в сутки), что тут даже таймер
-    // не обязателен, но я его добавил скорее ради общей структуры и красоты кода, нежели из реальной нужды.
     return () => {
       clearTimeout(latestBlockTimer);
-      clearTimeout(stakedTokensTimer);
-      clearTimeout(circulatingTokensTimer);
     };
   }, [chain])
 
