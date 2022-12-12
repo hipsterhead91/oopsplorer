@@ -696,6 +696,9 @@ html {
   margin: 0 12px 0 0;
   border-radius: 50%;
   background-color: #dcdcdc;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .validators__info {

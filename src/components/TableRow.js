@@ -25,7 +25,7 @@ function TableRow(props) {
       {/* ВАЛИДАТОР */}
       <div className="validators__row-cell">
         <div className="validators__validator">
-          <div className="validators__avatar"></div>
+          <div style={{ backgroundImage: `url("${validator.avatar}")` }} className="validators__avatar" />
           <div className="validators__info">
             <div className="validators__main-info">
               <span className="validators__rank">#{validator.rank.toString().padStart(3, '0')}</span>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useOutletContext, Outlet } from "react-router-dom";
 
 import { sortBytokens, getAdditionalProps, filterByActivity, getRanks } from "../utils/editingValidators";
+import { getAvatars } from "../utils/getAvatars";
 
 import TableRow from "./TableRow";
 import TableHeader from "./TableHeader";
@@ -16,16 +17,16 @@ function Validators() {
   const [isCurrentSetActive, setIsCurrentSetActive] = useState(true);
 
   // ПОЛУЧАЕМ ВСЕХ ВАЛИДАТОРОВ, СОРТИРУЕМ И ДОБАВЛЯЕМ ПОЛЯ
-  // Примечание: вообще, мне в зависимостях достаточно одного totalBonded, но VSCode подсказывает, что 
-  // chain и chainApi тоже надо указать, поэтому пусть будут - как минимум, вроде ничего не ломают.
   useEffect(() => {
     chainApi.getAllValidators()
-      .then(result => {
+      .then(async result => {
         const sorted = sortBytokens(result);
         const updated = sorted.map(validator => getAdditionalProps(chain, validator, totalBonded, chain.decimals));
         setAllValidators(updated);
+        const pictured = await getAvatars(updated);
+        setAllValidators(pictured);
       })
-  }, [chain]);
+  }, [chain, totalBonded]);
 
   // ДЕЛИМ ВАЛИДАТОРОВ НА АКТИВНЫХ И НЕАКТИВНЫХ
   useEffect(() => {
@@ -41,6 +42,22 @@ function Validators() {
   useEffect(() => {
     setCurrentValidators(activeValidators);
   }, [activeValidators])
+
+  // ПОЛУЧАЕМ АВАТАРКИ ДЛЯ АКТИВНЫХ ВАЛИДАТОРОВ
+  // useEffect(() => {
+  //   (async function () {
+  //     const pictured = await getAvatars(activeValidators);
+  //     setActiveValidators(pictured);
+  //   }());
+  // }, [activeValidators])
+
+  // ПОЛУЧАЕМ АВАТАРКИ ДЛЯ НЕАКТИВНЫХ ВАЛИДАТОРОВ
+  // useEffect(() => {
+  //   (async function () {
+  //     const pictured = await getAvatars(inactiveValidators);
+  //     setInactiveValidators(pictured);
+  //   }());
+  // }, [inactiveValidators])
 
   // СБРАСЫВАЕМ НАСТРОЙКИ ПРИ ПЕРЕКЛЮЧЕНИИ СЕТИ
   useEffect(() => {
