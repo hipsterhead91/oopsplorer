@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import noAvatar from "../images/no-avatar.png";
 
 function TableRow(props) {
 
@@ -9,6 +10,8 @@ function TableRow(props) {
   const chainPath = chain.name + '-' + network;
 
   // ДАННЫЕ ДЛЯ РЕНДЕРА И СТИЛИ
+  let avatar;
+  avatar = (validator.avatar) ? validator.avatar : noAvatar;
   const activity = (validator.status_short === 'Bonded') ? 'Active' : 'Inactive';
   const warning = (validator.commission_num > 15) ? 'Commission > 15%' : '';
   const activityStyle = (validator.status_short === 'Bonded') ? 'validators__activity' : 'validators__activity validators__activity_inactive';
@@ -25,7 +28,7 @@ function TableRow(props) {
       {/* ВАЛИДАТОР */}
       <div className="validators__row-cell">
         <div className="validators__validator">
-          <div style={{ backgroundImage: `url("${validator.avatar}")` }} className="validators__avatar" />
+          <div style={{ backgroundImage: `url("${avatar}")` }} className="validators__avatar" />
           <div className="validators__info">
             <div className="validators__main-info">
               <span className="validators__rank">#{validator.rank.toString().padStart(3, '0')}</span>

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useOutletContext, Link } from "react-router-dom";
-import Keybase from "../utils/Keybase";
 import noAvatar from "../images/no-avatar.png";
 
 function Validator() {
@@ -8,10 +7,8 @@ function Validator() {
   const currentValoper = useParams().valoper; // из ссылки в браузерной строке получаем адрес текущего валидатора
   const [chain, allValidators] = useOutletContext([]);
   const [currentValidator, setCurrentValidator] = useState();
-  const [avatar, setAvatar] = useState(noAvatar);
   const network = chain.isMain ? 'mainnet' : 'testnet';
   const chainPath = chain.name + '-' + network;
-  const keybase = new Keybase();
 
   // ПОЛУЧАЕМ ОБЪЕКТ ТЕКУЩЕГО ВАЛИДАТОРА
   useEffect(() => {
@@ -19,13 +16,9 @@ function Validator() {
     setCurrentValidator(validator);
   }, [chain, allValidators, currentValoper])
 
-  // ПОЛУЧАЕМ АВАТАР
   useEffect(() => {
-    if (currentValidator && currentValidator.description.identity) {
-      keybase.getAvatar(currentValidator.description.identity)
-        .then(result => setAvatar(result))
-    }
-  }, [currentValidator])
+    console.log(currentValidator)
+  })
 
   // ДАННЫЕ ДЛЯ РЕНДЕРА И СТИЛИ
   const moniker = (currentValidator === undefined) ? '' : currentValidator.description.moniker;
@@ -35,12 +28,14 @@ function Validator() {
   const votingPower = (currentValidator === undefined) ? '' : currentValidator.voting_power;
   const commission = (currentValidator === undefined) ? '' : currentValidator.commission_num;
   const bond = (currentValidator === undefined) ? '' : currentValidator.status_short;
+  let avatar  = (currentValidator === undefined) ? noAvatar : currentValidator.avatar;
   let activity, warning, activityStyle, bondStyle, jailStyle, warningStyle;
   let details = (currentValidator === undefined) ? '' : currentValidator.description.details;
   let securityContact = (currentValidator === undefined) ? '' : currentValidator.description.security_contact;
   if (details === '') details = '—';
   if (securityContact === '') securityContact = '—';
   if (currentValidator !== undefined) {
+    avatar = (currentValidator.avatar) ? currentValidator.avatar : noAvatar;
     activity = (currentValidator.status_short === 'Bonded') ? 'Active' : 'Inactive';
     warning = (currentValidator.commission_num > 15) ? 'Commission > 15%' : '';
     activityStyle = (currentValidator.status_short === 'Bonded') ? 'validator__activity' : 'validator__activity validator__activity_inactive';
@@ -64,7 +59,8 @@ function Validator() {
       <div className="validator__container">
         <Link to={`/${chainPath}/validators`} className="validator__close-button">&#10006;</Link>
         <div className="validator__card">
-          <img src={avatar} alt="" className="validator__avatar" />
+          {/* <img src={avatar} alt="" className="validator__avatar" /> */}
+          <div style={{backgroundImage: `url(${avatar})`}} className="validator__avatar" />
           <div className="validator__header">
             <h1 className="validator__moniker">{moniker}</h1>
             <span className="validator__valoper">{valoper}</span>

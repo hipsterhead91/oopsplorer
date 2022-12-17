@@ -1,5 +1,17 @@
 import capitalize from "./utils";
 
+// ДОБАВЛЯЕМ АВАТАРЫ
+export function addAvatars(validators, avatars) {
+  validators.forEach(validator => {
+    const valoper = validator.operator_address;
+    const match = avatars.find(obj => {
+      return (obj.download_url.includes(valoper)) && (obj.download_url.includes('.png'))
+    })
+    match ? validator.avatar = match.download_url : validator.avatar = '';
+  })
+  return validators;
+}
+
 // УПОРЯДОЧИВАНИЕ ВАЛИДАТОРОВ ПО СТЕЙКУ
 export function sortBytokens(validators) {
   validators.sort((x, y) => Number(x.tokens) - Number(y.tokens));
