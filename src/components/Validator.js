@@ -1,57 +1,90 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useOutletContext, Link } from "react-router-dom";
 import noAvatar from "../images/no-avatar.png";
+import { cutDecimals, tweakCommission } from "../utils/formatting";
 
 function Validator() {
 
   const currentValoper = useParams().valoper; // из ссылки в браузерной строке получаем адрес текущего валидатора
   const [chain, allValidators] = useOutletContext([]);
-  const [currentValidator, setCurrentValidator] = useState();
+  const [validator, setValidator] = useState();
   const network = chain.isMain ? 'mainnet' : 'testnet';
   const chainPath = chain.name + '-' + network;
 
   // ПОЛУЧАЕМ ОБЪЕКТ ТЕКУЩЕГО ВАЛИДАТОРА
   useEffect(() => {
     const validator = allValidators.find(val => val.operator_address === currentValoper);
-    setCurrentValidator(validator);
+    setValidator(validator);
   }, [chain, allValidators, currentValoper])
 
-  useEffect(() => {
-    console.log(currentValidator)
-  })
+  let [avatar, rank, moniker, valoper, activity, activityStyle, bond, bondStyle, jail, jailStyle, highCommission, highCommissionStyle, stake, symbol, votingPower, commission, website, securityContact, details] = '';
 
-  // ДАННЫЕ ДЛЯ РЕНДЕРА И СТИЛИ
-  const moniker = (currentValidator === undefined) ? '' : currentValidator.description.moniker;
-  const valoper = (currentValidator === undefined) ? '' : currentValidator.operator_address;
-  const rank = (currentValidator === undefined) ? '' : currentValidator.rank.toString().padStart(3, '0');
-  const tokens = (currentValidator === undefined) ? '' : currentValidator.tokens_num.toLocaleString('en');
-  const votingPower = (currentValidator === undefined) ? '' : currentValidator.voting_power;
-  const commission = (currentValidator === undefined) ? '' : currentValidator.commission_num;
-  const bond = (currentValidator === undefined) ? '' : currentValidator.status_short;
-  let avatar  = (currentValidator === undefined) ? noAvatar : currentValidator.avatar;
-  let activity, warning, activityStyle, bondStyle, jailStyle, warningStyle;
-  let details = (currentValidator === undefined) ? '' : currentValidator.description.details;
-  let securityContact = (currentValidator === undefined) ? '' : currentValidator.description.security_contact;
-  if (details === '') details = '—';
-  if (securityContact === '') securityContact = '—';
-  if (currentValidator !== undefined) {
-    avatar = (currentValidator.avatar) ? currentValidator.avatar : noAvatar;
-    activity = (currentValidator.status_short === 'Bonded') ? 'Active' : 'Inactive';
-    warning = (currentValidator.commission_num > 15) ? 'Commission > 15%' : '';
-    activityStyle = (currentValidator.status_short === 'Bonded') ? 'validator__activity' : 'validator__activity validator__activity_inactive';
-    if (currentValidator.status_short === 'Bonded') bondStyle = 'validator__bond';
-    if (currentValidator.status_short === 'Unbonded') bondStyle = 'validator__bond validator__bond_unbonded';
-    if (currentValidator.status_short === 'Unbonding') bondStyle = 'validator__bond validator__bond_unbonding';
-    jailStyle = (currentValidator.jailed_str === 'Jailed') ? 'validator__jail' : 'validator__jail_hidden';
-    warningStyle = (currentValidator.commission_num > 15) ? 'validator__warning' : 'validator__warning_hidden';
+  if (validator === undefined) {
+    avatar = noAvatar;
+    rank = '#000';
+    moniker = "Validator Doesn't Exist";
+    valoper = 'no validator operator address';
+    activity = 'Inactive';
+    activityStyle = 'validators__activity validators__activity_inactive';
+    stake = '—';
+    votingPower = '—';
+    commission = '—';
+    website = <p className="validator__data-text">—</p>;
+    securityContact = '—';
+    details = '—';
   }
 
-  const websiteElement = () => {
-    if (currentValidator === undefined || currentValidator.description.website === '') {
-      return <p className="validator__data-text">—</p>
-    } else {
-      return <a href={currentValidator.description.website} target="_blank" className="validator__data-link">{currentValidator.description.website}</a>
-    }
+  else if (validator) {
+
+    // РЕНДЕР АВАТАРА
+    avatar = (validator.avatar === '') ? noAvatar : validator.avatar;
+
+    // РЕНДЕР РЕЙТИНГА
+    rank = '#' + validator.rank.toString().padStart(3, '0');
+
+    // РЕНДЕР МОНИКЕРА
+    moniker = validator.description.moniker;
+
+    // РЕНДЕР ВАЛОПЕРА
+    valoper = validator.operator_address;
+
+    // РЕНДЕР АКТИВНОСТИ
+    activity = (validator.status === 'BOND_STATUS_BONDED') ? 'Active' : 'Inactive';
+
+    // РЕНДЕР БОНДА
+    activityStyle = (validator.status === 'BOND_STATUS_BONDED') ? 'validator__activity' : 'validator__activity validator__activity_inactive';
+    if (validator.status === 'BOND_STATUS_BONDED') { bond = 'Bonded'; bondStyle = 'validator__bond' }
+    if (validator.status === 'BOND_STATUS_UNBONDED') { bond = 'Unbonded'; bondStyle = 'validator__bond validator__bond_unbonded' }
+    if (validator.status === 'BOND_STATUS_UNBONDING') { bond = 'Unbonding'; bondStyle = 'validator__bond validator__bond_unbonding' }
+
+    // РЕНДЕР ТЮРЬМЫ
+    jail = (validator.jailed) ? 'Jailed' : '';
+    jailStyle = (validator.jailed) ? 'validator__jail' : 'validator__jail_hidden';
+
+    // РЕНДЕР ВЫСОКОЙ КОМИССИИ
+    highCommission = (validator.commission.commission_rates.rate > 0.05) ? 'High Commission' : '';
+    highCommissionStyle = (validator.commission.commission_rates.rate > 0.05) ? 'validator__warning' : 'validator__warning_hidden';
+
+    // РЕНДЕР СТЕЙКА
+    stake = cutDecimals(validator.tokens, chain.decimals).toLocaleString('en');
+    symbol = chain.symbol.toUpperCase();
+
+    // РЕНДЕР ВЕСА ГОЛОСА
+    votingPower = validator.voting_power + '%';
+
+    // РЕНДЕР КОМИССИИ
+    commission = tweakCommission(validator.commission.commission_rates.rate) + '%';
+
+    // РЕНДЕР ВЕБСАЙТА
+    website = (validator.description.website === '')
+      ? <p className="validator__data-text">—</p>
+      : <a className="validator__data-link" href={validator.description.website} target="_blank">{validator.description.website}</a>
+
+    // РЕНДЕР БЕЗОПАСНОГО КОНТАКТА
+    securityContact = (validator.description.security_contact === '') ? '—' : validator.description.security_contact;
+
+    // РЕНДЕР ОПИСАНИЯ
+    details = (validator.description.details === '') ? '—' : validator.description.details;
   }
 
   return (
@@ -59,28 +92,27 @@ function Validator() {
       <div className="validator__container">
         <Link to={`/${chainPath}/validators`} className="validator__close-button">&#10006;</Link>
         <div className="validator__card">
-          {/* <img src={avatar} alt="" className="validator__avatar" /> */}
-          <div style={{backgroundImage: `url(${avatar})`}} className="validator__avatar" />
+          <div style={{ backgroundImage: `url(${avatar})` }} className="validator__avatar" />
           <div className="validator__header">
             <h1 className="validator__moniker">{moniker}</h1>
             <span className="validator__valoper">{valoper}</span>
             <div className="validator__statuses">
               <span className={activityStyle}>{activity}</span>
               <span className={bondStyle}>{bond}</span>
-              <span className={jailStyle}>Jailed</span>
-              <span className={warningStyle}>{warning}</span>
+              <span className={jailStyle}>{jail}</span>
+              <span className={highCommissionStyle}>{highCommission}</span>
             </div>
           </div>
-          <span className="validator__rank">#{rank}</span>
+          <span className="validator__rank">{rank}</span>
           <div className="validator__data">
             <p className="validator__data-heading">Tokens Bonded:</p>
-            <span className="validator__data-text">{tokens}<span className="validator__denom">{chain.symbol.toUpperCase()}</span></span>
+            <span className="validator__data-text">{stake}<span className="validator__denom">{symbol}</span></span>
             <p className="validator__data-heading">Voting Power:</p>
-            <span className="validator__data-text">{votingPower}%</span>
+            <span className="validator__data-text">{votingPower}</span>
             <p className="validator__data-heading">Commission:</p>
-            <span className="validator__data-text">{commission}%</span>
+            <span className="validator__data-text">{commission}</span>
             <p className="validator__data-heading">Website:</p>
-            {websiteElement()}
+            {website}
             <p className="validator__data-heading">Security Contact:</p>
             <span className="validator__data-text">{securityContact}</span>
             <p className="validator__data-heading">Details:</p>

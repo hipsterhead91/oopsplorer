@@ -1,61 +1,49 @@
 import React, { useState, useEffect } from "react";
 import { useOutletContext, Outlet } from "react-router-dom";
-import { addAvatars, sortBytokens, getAdditionalProps, filterByActivity, getRanks } from "../utils/editingValidators";
-import { getAvatars } from "../utils/getAvatars";
-import { Octokit } from "@octokit/rest";
+import getAvatarsData from "../api/getAvatarsData";
+import { sortByTokens, addRanks, addVotingPower, addAvatars, filterActive, filterInactive } from "../utils/formatting";
 import TableRow from "./TableRow";
 import TableHeader from "./TableHeader";
-import noAvatar from "../images/no-avatar.png";
 
 function Validators() {
 
-  const octokit = new Octokit();
   const [chain, chainApi, totalBonded] = useOutletContext();
-  const [avatars, setAvatars] = useState([]);
+  const [isCurrentSetActive, setIsCurrentSetActive] = useState(true);
+  const [avatarsData, setAvatarsData] = useState([]);
   const [allValidators, setAllValidators] = useState([]);
   const [activeValidators, setActiveValidators] = useState([]);
   const [inactiveValidators, setInactiveValidators] = useState([]);
-  const [currentValidators, setCurrentValidators] = useState([]);
-  const [isCurrentSetActive, setIsCurrentSetActive] = useState(true);
+  const [shownValidators, setShownValidators] = useState([]);
 
-  async function getData() {
-    const repo = await octokit.repos.getContent({
-      owner: 'cosmostation',
-      repo: 'cosmostation_token_resource',
-      path: 'moniker/evmos'
-    });
-    return repo.data;
-  }
-
+  // ПОЛУЧАЕМ АВАТАРЫ В МАССИВЕ ОБЪЕКТОВ
   useEffect(() => {
-    getData()
-      .then(result => setAvatars(result))
+    getAvatarsData(chain)
+      .then(result => setAvatarsData(result))
   }, [])
 
   // ПОЛУЧАЕМ ВСЕХ ВАЛИДАТОРОВ, СОРТИРУЕМ И ДОБАВЛЯЕМ ПОЛЯ
   useEffect(() => {
     chainApi.getAllValidators()
       .then(async result => {
-        const sorted = sortBytokens(result);
-        const updated = sorted.map(validator => getAdditionalProps(chain, validator, totalBonded, chain.decimals));
-        const pictured = addAvatars(updated, avatars);
+        const sorted = sortByTokens(result);
+        const ranked = addRanks(sorted);
+        const powered = addVotingPower(ranked, totalBonded);
+        const pictured = addAvatars(powered, avatarsData);
         setAllValidators(pictured);
       })
-  }, [chain, totalBonded, avatars]);
+  }, [chain, totalBonded, avatarsData]);
 
   // ДЕЛИМ ВАЛИДАТОРОВ НА АКТИВНЫХ И НЕАКТИВНЫХ
   useEffect(() => {
-    let active = filterByActivity(allValidators, true);
-    let inactive = filterByActivity(allValidators, false);
-    active = getRanks(active, true);
-    inactive = getRanks(inactive, false, active.length);
+    const active = filterActive(allValidators);
+    const inactive = filterInactive(allValidators);
     setActiveValidators(active);
     setInactiveValidators(inactive);
   }, [allValidators]);
 
   // РЕНДЕРИМ АКТИВНЫХ ВАЛИДАТОРОВ КОГДА ОНИ ПОЛУЧЕНЫ
   useEffect(() => {
-    setCurrentValidators(activeValidators);
+    setShownValidators(activeValidators);
   }, [activeValidators])
 
   // СБРАСЫВАЕМ НАСТРОЙКИ ПРИ ПЕРЕКЛЮЧЕНИИ СЕТИ
@@ -64,12 +52,12 @@ function Validators() {
   }, [chain])
 
   const switchToActive = () => {
-    setCurrentValidators(activeValidators);
+    setShownValidators(activeValidators);
     setIsCurrentSetActive(true);
   }
 
   const switchToInactive = () => {
-    setCurrentValidators(inactiveValidators);
+    setShownValidators(inactiveValidators);
     setIsCurrentSetActive(false);
   }
 
@@ -84,9 +72,9 @@ function Validators() {
         <button onClick={switchToInactive} className={inactiveButtonStyle}>Inactive</button>
       </div>
       <div className="validators__table">
-        <TableHeader currentValidators={currentValidators} setCurrentValidators={setCurrentValidators} />
+        <TableHeader shownValidators={shownValidators} setShownValidators={setShownValidators} />
         <div className="validators__rows">
-          {currentValidators.map(validator => {
+          {shownValidators.map(validator => {
             return <TableRow key={validator.operator_address} validators={validator} chain={chain} />
           })}
         </div>

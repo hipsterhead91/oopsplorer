@@ -2,8 +2,8 @@ import React, { useState, useRef } from "react";
 
 function TableHeader(props) {
 
-  const currentValidators = props.currentValidators;
-  const setCurrentValidators = props.setCurrentValidators;
+  const shownValidators = props.shownValidators;
+  const setShownValidators = props.setShownValidators;
   const [order, setOrder] = useState('ASC');
   const vpAsc = useRef();
   const vpDsc = useRef();
@@ -12,16 +12,16 @@ function TableHeader(props) {
 
   const sortNumbers = (column) => {
     if (order === 'ASC') {
-      const sorted = [...currentValidators].sort((a, b) => {
+      const sorted = [...shownValidators].sort((a, b) => {
         return a[column] > b[column] ? 1 : -1
       });
-      setCurrentValidators(sorted);
+      setShownValidators(sorted);
       setOrder('DSC');
     } else if (order === 'DSC') {
-      const sorted = [...currentValidators].sort((a, b) => {
+      const sorted = [...shownValidators].sort((a, b) => {
         return a[column] < b[column] ? 1 : -1
       });
-      setCurrentValidators(sorted);
+      setShownValidators(sorted);
       setOrder('ASC');
     }
   }

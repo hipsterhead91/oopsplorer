@@ -4,7 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import evmosMainnet from '../chains/evmosMainnet';
 import evmosTestnet from '../chains/evmosTestnet';
 import CurrentChainContext from '../contexts/CurrentChainContext';
-import { capitalize } from '../utils/utils';
+import { capitalize } from '../utils/formatting';
 
 function Header(props) {
 

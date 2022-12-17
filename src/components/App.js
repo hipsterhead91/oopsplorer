@@ -1,16 +1,13 @@
 import React from "react";
 import { Route, Routes } from "react-router";
-
 import Layout from "./Layout";
 import Homepage from "./Homepage";
 import NotFound from "./NotFound";
 import Chain from "./Chain";
 import Validators from "./Validators";
 import Validator from "./Validator";
-
 import evmosMainnet from "../chains/evmosMainnet";
 import evmosTestnet from "../chains/evmosTestnet";
-
 import CurrentChainContext from "../contexts/CurrentChainContext";
 
 function App() {
