@@ -1,9 +1,11 @@
 const evmosMainnet = {
-  name: "evmos",
+  name: "Evmos",
+  path: "evmos",
+  cosmostation: "evmos",
   chain: "evmos_9001-2",
   isMain: true,
   denom: "aevmos",
-  symbol: "evmos",
+  symbol: "EVMOS",
   decimals: 18,
   api: [
     "https://rest.bd.evmos.org:1317",

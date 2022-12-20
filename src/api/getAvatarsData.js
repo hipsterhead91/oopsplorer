@@ -9,7 +9,7 @@ async function getAvatarsData(chain) {
   const repo = await octokit.repos.getContent({
     owner: 'cosmostation',
     repo: 'cosmostation_token_resource',
-    path: `moniker/${chain.name}`
+    path: `moniker/${chain.cosmostation}`
   });
   return repo.data;
 }

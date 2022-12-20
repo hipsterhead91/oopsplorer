@@ -8,7 +8,7 @@ function TableRow(props) {
   const validator = props.validators;
   const chain = props.chain;
   const network = chain.isMain ? 'mainnet' : 'testnet';
-  const chainPath = chain.name + '-' + network;
+  const chainPath = chain.path + '-' + network;
 
   // РЕНДЕР АВАТАРА
   const avatarUrl = (validator.avatar) ? validator.avatar : noAvatar;
@@ -39,7 +39,7 @@ function TableRow(props) {
 
   // РЕНДЕР ВЕСА ГОЛОСА
   const stake = cutDecimals(validator.tokens, chain.decimals).toLocaleString('en');
-  const symbol = chain.symbol.toUpperCase();
+  const symbol = chain.symbol;
   const votingPower = validator.voting_power + '%';
 
   // РЕНДЕР КОМИССИИ

@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Outlet, useOutletContext } from "react-router-dom";
 import CosmosRestApi from "../api/CosmosRestApi";
-import { capitalize, cutDecimals } from "../utils/formatting";
+import { cutDecimals } from "../utils/formatting";
 
 function Chain(props) {
 
   const chain = props.chain;
-  const chainName = capitalize(chain.name) + ' ' + `${chain.isMain ? 'Mainnet' : 'Testnet'}`;
-  const chainId = chain.chain;
   const chainApi = new CosmosRestApi(chain.api[0]);
   const [setCurrentChain] = useOutletContext();
   const [blockHeight, setBlockHeight] = useState('');
@@ -56,17 +54,19 @@ function Chain(props) {
     };
   }, [chain])
 
+  const subheading = `${chain.isMain ? 'mainnet' : 'testnet'} · ${chain.chain}`;
+
   return (
     <section className="chain">
-      <h1 className="chain__heading">{chainName}</h1>
-      <span className="chain__subheading">{chainId}</span>
+      <h1 className="chain__heading">{chain.name}</h1>
+      <span className="chain__subheading">{subheading}</span>
       <div className="chain__common-info">
         <div className="chain__info">
-          <span className="chain__info-heading">Current Block Height:</span>
+          <span className="chain__info-heading">Block Height:</span>
           <span className="chain__info-data">{Number(blockHeight).toLocaleString('en')}</span>
         </div>
         <div className="chain__info">
-          <span className="chain__info-heading">Total Bonded Tokens:</span>
+          <span className="chain__info-heading">Total Bonded:</span>
           <span className="chain__info-data">
             {cutDecimals(totalBondedUpdating, chain.decimals).toLocaleString('en')}
             <span>{chain.symbol}</span>

@@ -34,7 +34,7 @@
   font-weight: 900;
   font-size: 32px;
   line-height: 100%;
-  color: $white;
+  color: $whitest;
 
   span {
     margin: 0 2px 0 0;
@@ -58,7 +58,7 @@
 }
 
 .header__chain-switcher {
-  height: 32px;
+  height: 34px;
   display: flex;
   align-items: center;
   border: 2px solid $color-accent;
@@ -68,14 +68,16 @@
 }
 
 .header__current-chain {
+  min-width: 164px;
   margin: 0 12px 0 12px;
   font-size: 18px;
-  color: $white;
+  color: $whitest;
+  text-align: center;
 }
 
 .header__switcher {
   width: 30px;
-  height: 32px;
+  height: 34px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -103,15 +105,17 @@
 
 .header__chain-list {
   position: absolute;
-  top: 44px;
+  top: 68px;
   right: 0;
   box-sizing: border-box;
-  min-width: 100%;
-  width: max-content;
-  padding: 16px 16px 16px 16px;
-  display: flex;
-  flex-direction: column;
-  border-radius: 4px;
+  width: 100vw;
+  max-width: 1152px;
+  padding: 28px 20px 28px 20px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-column-gap: 20px;
+  grid-row-gap: 24px;
+  border-radius: 8px;
   background-color: $color-accent;
 
   &_hidden {
@@ -120,8 +124,14 @@
 }
 
 .header__chain {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 8px 8px 8px 8px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  border: 2px solid rgba($blackest, 0.1);
+  border-radius: 8px;
   font-weight: 500;
   font-size: 18px;
   color: $gray-darkest;
@@ -131,17 +141,16 @@
   
   &_selected {
     color: $color-second;
+    border: 2px solid rgba($color-second, 0.4);
   }
 
   &:hover {
     color: $color-second;
-  }
-
-  &:not(:last-child) {
-    margin: 0 0 16px 0;
+    border: 2px solid rgba($color-second, 0.4);
   }
 
   span {
+    margin: 2px 0 0 0;
     font-weight: 400;
     font-size: 12px;
     color: $gray-dark;
@@ -162,80 +171,3 @@
     visibility: none;
   }
 }
-
-// .header__logo {
-//   width: 40px;
-//   height: 40px;
-//   border-radius: 50%;
-//   background-color: $gray-dark;
-// }
-
-// .header__chain-button {
-//   padding: 4px 8px 4px 8px;
-//   display: flex;
-//   align-items: center;
-//   font-weight: 600;
-//   font-size: 20px;
-//   text-decoration: none;
-//   color: $gray-dark;
-//   border: 2px solid $gray-dark;
-//   background-color: $gray-lightest;
-//   cursor: pointer;
-//   transition: linear 0.2s;
-
-//   &:hover {
-//     background-color: $white;
-//   }
-// }
-
-// .header__arrow {
-//   width: 8px;
-//   height: 8px;
-//   margin: 0 4px 4px 8px;
-//   border-top: 3px solid $gray-dark;
-//   border-left: 3px solid $gray-dark;
-//   transform: rotate(225deg);
-
-//   &_up {
-//     transform: rotate(45deg);
-//   }
-
-//   &_down {
-//     transform: rotate(225deg);
-//   }
-// }
-
-// .header__chain-list {
-//   position: absolute;
-//   right: 24px;
-//   bottom: -82px;
-//   padding: 12px 32px 12px 32px;
-//   display: flex;
-//   flex-direction: column;
-//   align-items: flex-end;
-//   background-color: $gray-lightest;
-
-//   &_hidden {
-//     display: none;
-//   }
-// }
-
-// .header__list-button {
-//   box-sizing: border-box;
-//   font-weight: 500;
-//   font-size: 18px;
-//   text-decoration: none;
-//   color: $gray-dark;
-//   border: none;
-//   background: transparent;
-//   cursor: pointer;
-//   transition: linear 0.2s;
-
-//   &:hover {
-//     color: $gray-darkest;
-//   }
-
-//   &:not(:last-child) {
-//     margin: 0 0 12px 0;
-//   }
-// }

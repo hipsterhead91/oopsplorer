@@ -9,7 +9,7 @@ function Validator() {
   const [chain, allValidators] = useOutletContext([]);
   const [validator, setValidator] = useState();
   const network = chain.isMain ? 'mainnet' : 'testnet';
-  const chainPath = chain.name + '-' + network;
+  const chainPath = chain.path + '-' + network;
 
   // ПОЛУЧАЕМ ОБЪЕКТ ТЕКУЩЕГО ВАЛИДАТОРА
   useEffect(() => {
@@ -67,7 +67,7 @@ function Validator() {
 
     // РЕНДЕР СТЕЙКА
     stake = cutDecimals(validator.tokens, chain.decimals).toLocaleString('en');
-    symbol = chain.symbol.toUpperCase();
+    symbol = chain.symbol;
 
     // РЕНДЕР ВЕСА ГОЛОСА
     votingPower = validator.voting_power + '%';

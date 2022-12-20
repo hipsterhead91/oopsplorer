@@ -110,7 +110,7 @@ html {
   font-weight: 900;
   font-size: 32px;
   line-height: 100%;
-  color: #fafafa;
+  color: #ffffff;
 }
 
 .header__logo-top span {
@@ -137,7 +137,7 @@ html {
 }
 
 .header__chain-switcher {
-  height: 32px;
+  height: 34px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -151,14 +151,16 @@ html {
 }
 
 .header__current-chain {
+  min-width: 164px;
   margin: 0 12px 0 12px;
   font-size: 18px;
-  color: #fafafa;
+  color: #ffffff;
+  text-align: center;
 }
 
 .header__switcher {
   width: 30px;
-  height: 32px;
+  height: 34px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -196,23 +198,20 @@ html {
 
 .header__chain-list {
   position: absolute;
-  top: 44px;
+  top: 68px;
   right: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  min-width: 100%;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  padding: 16px 16px 16px 16px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  border-radius: 4px;
+  width: 100vw;
+  max-width: 1152px;
+  padding: 28px 20px 28px 20px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[5];
+      grid-template-columns: repeat(5, 1fr);
+  grid-column-gap: 20px;
+  grid-row-gap: 24px;
+  border-radius: 8px;
   background-color: #e8c413;
 }
 
@@ -221,6 +220,10 @@ html {
 }
 
 .header__chain {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  padding: 8px 8px 8px 8px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -228,6 +231,11 @@ html {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
   font-weight: 500;
   font-size: 18px;
   color: #282828;
@@ -239,17 +247,16 @@ html {
 
 .header__chain_selected {
   color: #a34061;
+  border: 2px solid rgba(163, 64, 97, 0.4);
 }
 
 .header__chain:hover {
   color: #a34061;
-}
-
-.header__chain:not(:last-child) {
-  margin: 0 0 16px 0;
+  border: 2px solid rgba(163, 64, 97, 0.4);
 }
 
 .header__chain span {
+  margin: 2px 0 0 0;
   font-weight: 400;
   font-size: 12px;
   color: #646464;
@@ -453,7 +460,7 @@ html {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  background-color: #fafafa;
+  background-color: #ffffff;
   border-radius: 12px;
 }
 
@@ -474,7 +481,6 @@ html {
   margin: 0 0 0 6px;
   font-weight: 300;
   font-size: 14px;
-  text-transform: uppercase;
   color: #646464;
 }
 
@@ -643,7 +649,7 @@ html {
   display: grid;
   -ms-grid-columns: 60% 20% 20%;
       grid-template-columns: 60% 20% 20%;
-  background-color: #fafafa;
+  background-color: #ffffff;
 }
 
 .validators__row:not(:last-child) {
@@ -893,7 +899,7 @@ html {
           box-sizing: border-box;
   max-width: 1000px;
   padding: 40px 160px 60px 32px;
-  background-color: #fafafa;
+  background-color: #ffffff;
   border-radius: 8px;
 }
 

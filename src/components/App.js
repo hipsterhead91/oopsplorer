@@ -6,9 +6,9 @@ import NotFound from "./NotFound";
 import Chain from "./Chain";
 import Validators from "./Validators";
 import Validator from "./Validator";
-import evmosMainnet from "../chains/evmosMainnet";
-import evmosTestnet from "../chains/evmosTestnet";
+import chains from "../chains/chains";
 import CurrentChainContext from "../contexts/CurrentChainContext";
+import { getPath } from "../utils/formatting";
 
 function App() {
 
@@ -23,17 +23,13 @@ function App() {
             <Route index element={<Homepage />} />
             <Route path="*" element={<NotFound />} />
 
-            <Route path="evmos-mainnet" element={<Chain chain={evmosMainnet} />}>
-              <Route path="validators" element={<Validators />}>
-                <Route path=":valoper" element={<Validator />} />
+            {chains.map(chain => {
+              return <Route key={chain.chain} path={getPath(chain)} element={<Chain chain={chain} />}>
+                <Route path="validators" element={<Validators />}>
+                  <Route path=":valoper" element={<Validator />} />
+                </Route>
               </Route>
-            </Route>
-
-            <Route path="evmos-testnet" element={<Chain chain={evmosTestnet} />}>
-              <Route path="validators" element={<Validators />}>
-                <Route path=":valoper" element={<Validator />} />
-              </Route>
-            </Route>
+            })}
 
           </Route>
         </Routes>

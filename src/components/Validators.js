@@ -19,27 +19,27 @@ function Validators() {
   useEffect(() => {
     getAvatarsData(chain)
       .then(result => setAvatarsData(result))
-  }, [])
+  }, [chain])
 
-  // ПОЛУЧАЕМ ВСЕХ ВАЛИДАТОРОВ, СОРТИРУЕМ И ДОБАВЛЯЕМ ПОЛЯ
+  // ПОЛУЧАЕМ ВАЛИДАТОРОВ, СОРТИРУЕМ И ДОБАВЛЯЕМ ПОЛЯ
   useEffect(() => {
     chainApi.getAllValidators()
       .then(async result => {
-        const sorted = sortByTokens(result);
-        const ranked = addRanks(sorted);
-        const powered = addVotingPower(ranked, totalBonded);
-        const pictured = addAvatars(powered, avatarsData);
-        setAllValidators(pictured);
+        let active = filterActive(result);
+        let inactive = filterInactive(result);
+        active = sortByTokens(active);
+        inactive = sortByTokens(inactive);
+        let all = active.concat(inactive);
+        all = addRanks(all);
+        all = addVotingPower(all, totalBonded);
+        all = addAvatars(all, avatarsData);
+        setAllValidators(all);
+        active = filterActive(all);
+        inactive = filterInactive(all);
+        setActiveValidators(active);
+        setInactiveValidators(inactive);
       })
   }, [chain, totalBonded, avatarsData]);
-
-  // ДЕЛИМ ВАЛИДАТОРОВ НА АКТИВНЫХ И НЕАКТИВНЫХ
-  useEffect(() => {
-    const active = filterActive(allValidators);
-    const inactive = filterInactive(allValidators);
-    setActiveValidators(active);
-    setInactiveValidators(inactive);
-  }, [allValidators]);
 
   // РЕНДЕРИМ АКТИВНЫХ ВАЛИДАТОРОВ КОГДА ОНИ ПОЛУЧЕНЫ
   useEffect(() => {

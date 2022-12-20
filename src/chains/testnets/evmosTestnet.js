@@ -1,9 +1,11 @@
-const evmosMainnet = {
-  name: "evmos",
+const evmosTestnet = {
+  name: "Evmos",
+  path: "evmos",
+  cosmostation: "evmos",
   chain: "evmos_9001-4",
   isMain: false,
-  denom: "aevmos",
-  symbol: "evmos",
+  denom: "atevmos",
+  symbol: "TEVMOS",
   decimals: 18,
   api: [
     "https://api-t.evmos.nodestake.top",
@@ -12,4 +14,4 @@ const evmosMainnet = {
   ],
 }
 
-export default evmosMainnet;
+export default evmosTestnet;

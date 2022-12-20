@@ -127,8 +127,7 @@
   width: 100%;
   display: grid;
   grid-template-columns: 60% 20% 20%;
-  background-color: $white;
-
+  background-color: $whitest;
   &:not(:last-child) {
     border-bottom: 1px solid $color-background;
   }

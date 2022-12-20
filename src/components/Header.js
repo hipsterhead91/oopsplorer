@@ -1,10 +1,9 @@
 import React from 'react';
 import { Link, NavLink } from "react-router-dom";
 
-import evmosMainnet from '../chains/evmosMainnet';
-import evmosTestnet from '../chains/evmosTestnet';
+import chains from '../chains/chains';
 import CurrentChainContext from '../contexts/CurrentChainContext';
-import { capitalize } from '../utils/formatting';
+import { getPath } from '../utils/formatting';
 
 function Header(props) {
 
@@ -31,11 +30,8 @@ function Header(props) {
     window.scrollTo(0, 0); // прокрутка страницы наверх
   }
 
-  const chainText = (currentChain === null) ? 'Chain is not selected' : `${capitalize(currentChain.name)} ${currentChain.isMain ? 'Mainnet' : 'Testnet'}`;
+  const chainText = (currentChain === null) ? 'Select Chain' : `${currentChain.name} ${currentChain.isMain ? '' : 'Testnet'}`;
   const chainButtonStyle = ({ isActive }) => isActive ? "header__chain header__chain_selected" : "header__chain";
-
-  const chainFullName = (chain) => `${capitalize(chain.name)} ${chain.isMain ? 'Mainnet' : 'Testnet'}`;
-  const chainPath = (chain) => `${chain.name}-${chain.isMain ? 'mainnet' : 'testnet'}`;
 
   return (
     <header className="header">
@@ -51,13 +47,11 @@ function Header(props) {
           </div>
           <div ref={chainList} className="header__chain-list header__chain-list_hidden">
 
-            <NavLink to={`/${chainPath(evmosMainnet)}/validators`} onClick={() => { switchChain(evmosMainnet) }} className={chainButtonStyle}>
-              {chainFullName(evmosMainnet)} <span>({evmosMainnet.chain})</span>
-            </NavLink>
-
-            <NavLink to={`/${chainPath(evmosTestnet)}/validators`} onClick={() => { switchChain(evmosTestnet) }} className={chainButtonStyle}>
-              {chainFullName(evmosTestnet)} <span>({evmosTestnet.chain})</span>
-            </NavLink>
+            {chains.map(chain => {
+              return <NavLink key={chain.chain} to={`/${getPath(chain)}/validators`} onClick={() => { switchChain(chain) }} className={chainButtonStyle}>
+                {`${chain.name} ${chain.isMain ? '' : 'Testnet'}`} <span>({chain.chain})</span>
+              </NavLink>
+            })}
 
           </div>
         </div>

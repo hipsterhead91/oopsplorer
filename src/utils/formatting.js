@@ -1,6 +1,8 @@
-// КАПИТАЛИЗИРОВАТЬ СТРОКУ
-export function capitalize(string) {
-  return string[0].toUpperCase() + string.slice(1).toLowerCase();
+// ПОЛУЧИТЬ ПУТЬ
+// Примечание: принимает объект сети с обязательными свойствами path и isMain, возвращает строку.
+export function getPath(chain) {
+  const network = (chain.isMain) ? 'mainnet' : 'testnet';
+  return chain.path + '-' + network;
 }
 
 // ОБРЕЗАТЬ КОПЕЙКИ
