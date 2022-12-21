@@ -2,6 +2,7 @@ const kichainMainnet = {
   name: "KiChain",
   path: "kichain",
   cosmostation: "ki",
+  coinGecko: "ki",
   chain: "kichain-2",
   isMain: true,
   denom: "uxki",
@@ -12,6 +13,7 @@ const kichainMainnet = {
     "https://ki.api.ping.pub",
     "https://api.ki.nodestake.top"
   ],
+  description: "Open-source, public blockchain designed to enable decentralized finance, built with the Cosmos SDK."
 }
 
 export default kichainMainnet;

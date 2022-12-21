@@ -439,9 +439,10 @@ html {
   margin: 0 0 20px 0;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 1fr 1fr;
-      grid-template-columns: 1fr 1fr 1fr;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
   grid-column-gap: 24px;
+  grid-row-gap: 24px;
 }
 
 .chain__common-info_hidden {
@@ -473,7 +474,7 @@ html {
 .chain__info-data {
   margin: 8px 0 0 0;
   font-weight: 600;
-  font-size: 24px;
+  font-size: 16px;
   color: #0d6573;
 }
 

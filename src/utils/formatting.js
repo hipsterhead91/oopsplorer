@@ -9,8 +9,12 @@ export function getPath(chain) {
 // Примечание: токены строкой, десятичные числом. Возвращает строку.
 export function cutDecimals(tokens, decimals) {
   return (tokens.length > decimals)
-    ? Number(tokens.slice(0, -decimals))
-    : 0
+    ? tokens.slice(0, -decimals)
+    : '0'
+}
+
+export function cutExtra(tokens, extraSymbols) {
+  return tokens.slice(0, -extraSymbols);
 }
 
 // УПОРЯДОЧИТЬ ВАЛИДАТОРОВ ПО СТЕЙКУ

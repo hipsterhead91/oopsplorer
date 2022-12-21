@@ -14,7 +14,7 @@ import omniflixMainnet from "./mainnets/omniflixMainnet";
 import passageMainnet from "./mainnets/passageMainnet";
 import secretMainnet from "./mainnets/secretMainnet";
 
-const chains = [
+export const chains = [
   akashMainnet,
   axelarMainnet,
   bandMainnet,
@@ -32,4 +32,12 @@ const chains = [
   secretMainnet,
 ];
 
-export default chains;
+const getCoinGeckoIds = () => {
+  const idList = [];
+  chains.forEach(chain => {
+    if (chain.coinGecko) idList.push(chain.coinGecko)
+  });
+  return idList.join('%2C%20');
+}
+
+export const coinGeckoIds = getCoinGeckoIds();

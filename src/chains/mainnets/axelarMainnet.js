@@ -2,6 +2,7 @@ const axelarMainnet = {
   name: "Axelar",
   path: "axelar",
   cosmostation: "axelar",
+  coinGecko: "axelar",
   chain: "axelar-dojo-1",
   isMain: true,
   denom: "uaxl",
@@ -17,6 +18,7 @@ const axelarMainnet = {
     "https://axelar-lcd.quantnode.tech",
     "https://api-1.axelar.nodes.guru:443"
   ],
+  description: "A decentralized multi-chain network that enables cross chain communication with a simple pegging mechanism."
 }
 
 export default axelarMainnet;

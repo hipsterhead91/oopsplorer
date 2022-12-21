@@ -2,6 +2,7 @@ const evmosMainnet = {
   name: "Evmos",
   path: "evmos",
   cosmostation: "evmos",
+  coinGecko: "evmos",
   chain: "evmos_9001-2",
   isMain: true,
   denom: "aevmos",
@@ -14,6 +15,7 @@ const evmosMainnet = {
     "https://api.evmos.silknodes.io",
     "https://evmos-rest.publicnode.com",
   ],
+  description: "A Cosmos SDK-based IBC & Ethereum Virtual Machine-compatible blockchain."
 }
 
 export default evmosMainnet;

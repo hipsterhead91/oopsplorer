@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link, NavLink } from "react-router-dom";
-
-import chains from '../chains/chains';
+import { chains } from '../chains/chains';
 import CurrentChainContext from '../contexts/CurrentChainContext';
 import { getPath } from '../utils/formatting';
 

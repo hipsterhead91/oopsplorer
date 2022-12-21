@@ -62,11 +62,11 @@ function Validator() {
     jailStyle = (validator.jailed) ? 'validator__jail' : 'validator__jail_hidden';
 
     // РЕНДЕР ВЫСОКОЙ КОМИССИИ
-    highCommission = (validator.commission.commission_rates.rate > 0.05) ? 'High Commission' : '';
-    highCommissionStyle = (validator.commission.commission_rates.rate > 0.05) ? 'validator__warning' : 'validator__warning_hidden';
+    highCommission = (validator.commission.commission_rates.rate > 0.1) ? 'High Commission' : '';
+    highCommissionStyle = (validator.commission.commission_rates.rate > 0.1) ? 'validator__warning' : 'validator__warning_hidden';
 
     // РЕНДЕР СТЕЙКА
-    stake = cutDecimals(validator.tokens, chain.decimals).toLocaleString('en');
+    stake = Number(cutDecimals(validator.tokens, chain.decimals)).toLocaleString('en');
     symbol = chain.symbol;
 
     // РЕНДЕР ВЕСА ГОЛОСА

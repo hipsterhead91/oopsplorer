@@ -2,6 +2,7 @@ const omniflixMainnet = {
   name: "Omniflix",
   path: "omniflix",
   cosmostation: "omniflix",
+  coinGecko: "",
   chain: "omniflixhub-1",
   isMain: true,
   denom: "uflix",
@@ -11,6 +12,7 @@ const omniflixMainnet = {
     "https://api.omniflix.nodestake.top",
     "https://omniflixhub-api.skynetvalidators.com"
   ],
+  description: "A network specifically designed for creators and communities, powered by NFTs."
 }
 
 export default omniflixMainnet;

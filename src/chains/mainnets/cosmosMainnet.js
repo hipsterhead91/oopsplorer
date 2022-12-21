@@ -2,6 +2,7 @@ const cosmosMainnet = {
   name: "Cosmos Hub",
   path: "cosmos",
   cosmostation: "cosmoshub",
+  coinGecko: "cosmos",
   chain: "cosmoshub-4",
   isMain: true,
   denom: "uatom",
@@ -12,6 +13,7 @@ const cosmosMainnet = {
     "https://lcd-cosmoshub.blockapsis.com:443",
     "https://cosmos.api.ping.pub"
   ],
+  description: "The Cosmos Hub is an Internet of Blockchains, a network of blockchains able to communicate with each other in a decentralized way."
 }
 
 export default cosmosMainnet;

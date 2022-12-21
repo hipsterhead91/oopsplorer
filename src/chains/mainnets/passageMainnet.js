@@ -2,6 +2,7 @@ const passageMainnet = {
   name: "Passage",
   path: "passage",
   cosmostation: "passage",
+  coinGecko: "",
   chain: "passage-1",
   isMain: true,
   denom: "upasg",
@@ -11,6 +12,7 @@ const passageMainnet = {
     "https://passage-api.polkachu.com",
     "https://api.passage.nodestake.top"
   ],
+  description: "Passage is building a virtual 3D world/metaverse that is mainly powered by Unreal Engine 5, Akash, and IBC."
 }
 
 export default passageMainnet;

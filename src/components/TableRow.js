@@ -34,11 +34,11 @@ function TableRow(props) {
   const jailStyle = (validator.jailed) ? 'validators__jail' : 'validators__jail_hidden';
 
   // РЕНДЕР ВЫСОКОЙ КОМИССИИ
-  const highCommission = (validator.commission.commission_rates.rate > 0.05) ? 'High Commission' : '';
-  const highCommissionStyle = (validator.commission.commission_rates.rate > 0.05) ? 'validators__warning' : 'validators__warning_hidden';
+  const highCommission = (validator.commission.commission_rates.rate > 0.1) ? 'High Commission' : '';
+  const highCommissionStyle = (validator.commission.commission_rates.rate > 0.1) ? 'validators__warning' : 'validators__warning_hidden';
 
   // РЕНДЕР ВЕСА ГОЛОСА
-  const stake = cutDecimals(validator.tokens, chain.decimals).toLocaleString('en');
+  const stake = Number(cutDecimals(validator.tokens, chain.decimals)).toLocaleString('en');
   const symbol = chain.symbol;
   const votingPower = validator.voting_power + '%';
 

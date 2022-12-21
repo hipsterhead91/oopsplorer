@@ -2,10 +2,11 @@ const osmosisMainnet = {
   name: "Osmosis",
   path: "osmosis",
   cosmostation: "osmosis",
+  coinGecko: "osmosis",
   chain: "osmosis-1",
   isMain: true,
-  denom: "uion",
-  symbol: "ION",
+  denom: "uosmo",
+  symbol: "OSMO",
   decimals: 6,
   api: [
     "https://api-osmosis-ia.cosmosia.notional.ventures",
@@ -13,6 +14,7 @@ const osmosisMainnet = {
     "https://osmo.api.ping.pub",
     "https://lcd-osmosis.blockapsis.com"
   ],
+  description: "The interchain AMM powered by the Cosmos Inter-Blockchain Communication protocol."
 }
 
 export default osmosisMainnet;

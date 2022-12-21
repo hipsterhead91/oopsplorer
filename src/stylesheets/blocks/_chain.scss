@@ -25,8 +25,9 @@
   width: 100%;
   margin: 0 0 20px 0;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   grid-column-gap: 24px;
+  grid-row-gap: 24px;
 
   &_hidden {
     display: none;
@@ -52,7 +53,7 @@
 .chain__info-data {
   margin: 8px 0 0 0;
   font-weight: 600;
-  font-size: 24px;
+  font-size: 16px;
   color: $color-main;
 
   span {
