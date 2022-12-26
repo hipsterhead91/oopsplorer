@@ -13,7 +13,8 @@ const chihuahuaMainnet = {
     "https://api.chihuahua.wtf",
     "https://chihuahua-api.mercury-nodes.net"
   ],
-  description: "The first meme coin on Cosmos ecosystem."
+  description: "The first meme coin on Cosmos ecosystem.",
+  logo: "/logos/chihuahua.png"
 }
 
 export default chihuahuaMainnet;

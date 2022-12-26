@@ -14,11 +14,11 @@
 
 .validator__container {
   position: relative;
-  width: 100%;
   box-sizing: border-box;
+  width: 100%;
   max-width: 1000px;
   padding: 40px 160px 60px 32px;
-  background-color: $whitest;
+  background-color: $white;
   border-radius: 8px;
 }
 
@@ -28,16 +28,11 @@
   right: 32px;
   font-size: 48px;
   line-height: 100%;
-  color: $color-second;
+  color: $gray-darker;
   text-decoration: none;
   background-color: transparent;
   border: none;
   cursor: pointer;
-  transition: linear 0.3s;
-
-  &:hover {
-    color: $gray-darker;
-  }
 }
 
 .validator__card {
@@ -128,7 +123,7 @@
 
   &_unbonding {
     color: #a19108;
-    background-color: rgba($color-accent, 0.3);
+    background-color: rgba($color-second, 0.3);
   }
 }
 
@@ -137,8 +132,8 @@
   margin: 0 8px 0 0;
   font-size: 14px;
   line-height: 100%;
-  color: rgba($color-second, 0.6);
-  background-color: rgba($color-second, 0.2);
+  color: rgba($color-accent, 0.6);
+  background-color: rgba($color-accent, 0.2);
   border-radius: 4px;
 
   &_hidden {
@@ -150,8 +145,8 @@
   padding: 4px 8px 4px 8px;
   font-size: 14px;
   line-height: 100%;
-  color: rgba($color-second, 0.6);
-  background-color: rgba($color-second, 0.2);
+  color: rgba($color-accent, 0.6);
+  background-color: rgba($color-accent, 0.2);
   border-radius: 4px;
 
   &_hidden {
@@ -188,4 +183,9 @@
   font-weight: 400;
   font-size: 16px;
   color: $color-main;
+  transition: linear 0.2s;
+
+  &:hover {
+    color: $color-accent;
+  }
 }

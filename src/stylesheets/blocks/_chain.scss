@@ -1,65 +1,186 @@
 .chain {
   width: 100%;
+  padding: 40px 0 0 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
-.chain__heading {
-  margin: 24px 0 4px 0;
-  font-weight: 700;
-  font-size: 40px;
-  text-align: center;
-  color: $color-second;
-}
-
-.chain__subheading {
-  margin: 0 0 24px 0;
-  font-weight: 300;
-  font-size: 18px;
-  text-align: center;
-  color: $gray-dark;
-}
-
-.chain__common-info {
+.chain__plates {
   width: 100%;
-  margin: 0 0 20px 0;
+  margin: 0 0 40px 0;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-column-gap: 24px;
-  grid-row-gap: 24px;
+  grid-template-columns: repeat(8, 1fr);
+  grid-column-gap: 12px;
+  grid-row-gap: 12px;
 
   &_hidden {
     display: none;
   }
 }
 
-.chain__info {
+.chain__plate {
   box-sizing: border-box;
   width: 100%;
-  padding: 12px 20px 12px 20px;
+  padding: 16px 16px 16px 16px;
   display: flex;
   flex-direction: column;
-  background-color: $whitest;
-  border-radius: 12px;
+  border-radius: 8px;
+  background-color: $white;
 }
 
-.chain__info-heading {
-  font-weight: 300;
+#description-plate {
+  aspect-ratio : 1 / 1;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+#validators-plate {
+  aspect-ratio : 1 / 1;
+  grid-column-start: 7;
+  grid-column-end: 8;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+#proposals-plate {
+  aspect-ratio : 1 / 1;
+  grid-column-start: 7;
+  grid-column-end: 8;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+#bonded-plate {
+  grid-column-start: 5;
+  grid-column-end: 7;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+#community-plate {
+  grid-column-start: 5;
+  grid-column-end: 7;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+#logo-plate {
+  aspect-ratio : 1 / 1;
+  grid-column-start: 8;
+  grid-column-end: 9;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+#block-plate {
+  grid-column-start: 3;
+  grid-column-end: 5;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+#inflation-plate {
+  aspect-ratio : 1 / 1;
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+#unbonding-plate {
+  aspect-ratio : 1 / 1;
+  grid-column-start: 4;
+  grid-column-end: 5;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+#price-plate {
+  aspect-ratio : 1 / 1;
+  grid-column-start: 8;
+  grid-column-end: 9;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+.chain__heading {
+  font-weight: 700;
+  font-size: 28px;
+  color: $gray-darker;
+}
+
+.chain__subheading {
+  font-weight: 400;
   font-size: 14px;
   color: $gray-dark;
 }
 
-.chain__info-data {
-  margin: 8px 0 0 0;
+.chain__description {
+  margin: auto 0 0 0;
+  font-weight: 400;
+  font-size: 16px;
+  color: $gray-darker;
+}
+
+.chain__plate-heading {
+  font-weight: 400;
+  font-size: 14px;
+  color: $gray-dark;
+}
+
+.chain__plate-error {
+  margin: auto 0 0 auto;
+  font-weight: 400;
+  font-size: 12px;
+  text-align: end;
+  color: $color-accent;
+
+  span {
+    font-weight: 600;
+    
+  }
+}
+
+.chain__plate-tokens {
+  margin: auto 0 0 auto;
+  font-weight: 400;
+  font-size: 16px;
+  color: $gray-darker;
+
+  span {
+    margin: 0 0 0 4px;
+    font-weight: 400;
+    font-size: 12px;
+    color: $gray-dark;
+  }
+}
+
+.chain__plate-data {
+  margin: auto 0 0 auto;
+  font-weight: 400;
+  font-size: 16px;
+  color: $gray-darker;
+}
+
+.chain__plate-link {
+  margin: auto 0 0 auto;
   font-weight: 600;
   font-size: 16px;
   color: $color-main;
+  text-decoration: none;
+  transition: linear 0.2s;
 
-  span {
-    margin: 0 0 0 6px;
-    font-weight: 300;
-    font-size: 14px;
-    color: $gray-dark;
+  &:hover {
+    color: $color-accent;
   }
+}
+
+.chain__plate-logo {
+  width: 100%;
+  height: 100%;
+  background-size: 80%;
+  background-position: center;
+  background-repeat: no-repeat;
 }

@@ -13,7 +13,8 @@ const evmosTestnet = {
     "https://rest.bd.evmos.dev:1317",
     "https://evmos-testnet-lcd.qubelabs.io",
   ],
-  description: "A Cosmos SDK-based IBC & Ethereum Virtual Machine-compatible blockchain."
+  description: "A Cosmos SDK-based IBC & Ethereum Virtual Machine-compatible blockchain.",
+  logo: "/logos/evmos.png"
 }
 
 export default evmosTestnet;

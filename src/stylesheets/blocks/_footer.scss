@@ -15,10 +15,27 @@
   padding: 0 24px 0 24px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .footer__date {
+  font-weight: 300;
   font-size: 18px;
   color: $gray-light;
+}
+
+.footer__info {
+  font-weight: 200;
+  font-size: 14px;
+  color: $gray-light;
+
+  a {
+    color: $color-second;
+    text-decoration: none;
+    transition: linear 0.2s;
+
+    &:hover {
+      color: $white;
+    }
+  }
 }

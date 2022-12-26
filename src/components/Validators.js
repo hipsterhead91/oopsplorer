@@ -7,7 +7,7 @@ import TableHeader from "./TableHeader";
 
 function Validators() {
 
-  const [chain, chainApi, totalBonded] = useOutletContext();
+  const [chain, chainApi, totalBonded, activeProposals] = useOutletContext();
   const [isCurrentSetActive, setIsCurrentSetActive] = useState(true);
   const [avatarsData, setAvatarsData] = useState([]);
   const [allValidators, setAllValidators] = useState([]);
@@ -51,14 +51,32 @@ function Validators() {
     setIsCurrentSetActive(true);
   }, [chain])
 
+  // ПЕРЕКЛЮЧАЕМСЯ НА АКТИВНЫЙ СЕТ
   const switchToActive = () => {
     setShownValidators(activeValidators);
     setIsCurrentSetActive(true);
   }
 
+  // ПЕРЕКЛЮЧАЕМСЯ НА НЕАКТИВНЫЙ СЕТ
   const switchToInactive = () => {
     setShownValidators(inactiveValidators);
     setIsCurrentSetActive(false);
+  }
+
+  // СКРОЛЛИМ СТРАНИЦУ ВВЕРХ
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
+
+  // СКРОЛЛИМ СТРАНИЦУ ВНИЗ
+  const scrollToBottom = () => {
+    window.scrollTo({
+      top: 99999999,
+      behavior: "smooth"
+    });
   }
 
   const activeButtonStyle = isCurrentSetActive ? "validators__switcher-button validators__switcher-button_selected" : "validators__switcher-button"
@@ -67,9 +85,11 @@ function Validators() {
   return (
     <div className="validators">
       <Outlet context={[chain, allValidators]} />
-      <div className="validators__switcher">
-        <button onClick={switchToActive} className={activeButtonStyle}>Active</button>
-        <button onClick={switchToInactive} className={inactiveButtonStyle}>Inactive</button>
+      <div className="validators__switcher-wrapper">
+        <div className="validators__switcher">
+          <button onClick={switchToActive} className={activeButtonStyle}>Active</button>
+          <button onClick={switchToInactive} className={inactiveButtonStyle}>Inactive</button>
+        </div>
       </div>
       <div className="validators__table">
         <TableHeader shownValidators={shownValidators} setShownValidators={setShownValidators} />
@@ -77,6 +97,15 @@ function Validators() {
           {shownValidators.map(validator => {
             return <TableRow key={validator.operator_address} validators={validator} chain={chain} />
           })}
+        </div>
+      </div>
+
+      <div className="validators__scroll-buttons">
+        <div onClick={scrollToTop} className="validators__scroll-button">
+          <div className="validators__top-arrow"></div>
+        </div>
+        <div onClick={scrollToBottom} className="validators__scroll-button">
+          <div className="validators__bottom-arrow"></div>
         </div>
       </div>
     </div>

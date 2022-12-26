@@ -1,0 +1,21 @@
+.proposals {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 0 60px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.proposals__heading {
+  margin: 0 0 0 16px;
+  font-weight: 700;
+  font-size: 24px;
+  color: $gray-darker;
+}
+
+.proposals__no-proposals {
+  margin: 12px 0 0 16px;
+  font-weight: 500;
+  font-size: 16;
+  color: $color-accent;
+}

@@ -21,21 +21,21 @@ function TableRow(props) {
 
   // РЕНДЕР АКТИВНОСТИ
   const activity = (validator.status === 'BOND_STATUS_BONDED') ? 'Active' : 'Inactive';
-  const activityStyle = (validator.status === 'BOND_STATUS_BONDED') ? 'validators__activity' : 'validators__activity validators__activity_inactive';
+  const activityStyle = (validator.status === 'BOND_STATUS_BONDED') ? 'table-row__activity' : 'table-row__activity table-row__activity_inactive';
 
   // РЕНДЕР БОНДА
   let bond, bondStyle;
-  if (validator.status === 'BOND_STATUS_BONDED') { bond = 'Bonded'; bondStyle = 'validators__bond' }
-  if (validator.status === 'BOND_STATUS_UNBONDED') { bond = 'Unbonded'; bondStyle = 'validators__bond validators__bond_unbonded' }
-  if (validator.status === 'BOND_STATUS_UNBONDING') { bond = 'Unbonding'; bondStyle = 'validators__bond validators__bond_unbonding' }
+  if (validator.status === 'BOND_STATUS_BONDED') { bond = 'Bonded'; bondStyle = 'table-row__bond' }
+  if (validator.status === 'BOND_STATUS_UNBONDED') { bond = 'Unbonded'; bondStyle = 'table-row__bond table-row__bond_unbonded' }
+  if (validator.status === 'BOND_STATUS_UNBONDING') { bond = 'Unbonding'; bondStyle = 'table-row__bond table-row__bond_unbonding' }
 
   // РЕНДЕР ТЮРЬМЫ
   const jail = (validator.jailed) ? 'Jailed' : '';
-  const jailStyle = (validator.jailed) ? 'validators__jail' : 'validators__jail_hidden';
+  const jailStyle = (validator.jailed) ? 'table-row__jail' : 'table-row__jail_hidden';
 
   // РЕНДЕР ВЫСОКОЙ КОМИССИИ
   const highCommission = (validator.commission.commission_rates.rate > 0.1) ? 'High Commission' : '';
-  const highCommissionStyle = (validator.commission.commission_rates.rate > 0.1) ? 'validators__warning' : 'validators__warning_hidden';
+  const highCommissionStyle = (validator.commission.commission_rates.rate > 0.1) ? 'table-row__warning' : 'table-row__warning_hidden';
 
   // РЕНДЕР ВЕСА ГОЛОСА
   const stake = Number(cutDecimals(validator.tokens, chain.decimals)).toLocaleString('en');
@@ -46,39 +46,33 @@ function TableRow(props) {
   const commission = tweakCommission(validator.commission.commission_rates.rate) + '%';
 
   return (
-    <div className="validators__row">
+    <div className="table-row">
 
       {/* ВАЛИДАТОР */}
-      <div className="validators__row-cell">
-        <div className="validators__validator">
-          <div style={{ backgroundImage: `url("${avatarUrl}")` }} className="validators__avatar" />
-          <div className="validators__info">
-            <div className="validators__main-info">
-              <span className="validators__rank">{rank}</span>
-              <Link to={`/${chainPath}/validators/${validator.operator_address}`} state={validator} className="validators__moniker">{moniker}</Link>
-            </div>
-            <div className="validators__statuses">
-              <span className={activityStyle}>{activity}</span>
-              <span className={bondStyle}>{bond}</span>
-              <span className={jailStyle}>{jail}</span>
-              <span className={highCommissionStyle}>{highCommission}</span>
-            </div>
+      <div className="table-row__validator">
+        <div style={{ backgroundImage: `url("${avatarUrl}")` }} className="table-row__avatar" />
+        <div className="table-row__info">
+          <div className="table-row__main-info">
+            <span className="table-row__rank">{rank}</span>
+            <Link to={`/${chainPath}/validators/${validator.operator_address}`} state={validator} className="table-row__moniker">{moniker}</Link>
+          </div>
+          <div className="table-row__statuses">
+            <span className={activityStyle}>{activity}</span>
+            <span className={bondStyle}>{bond}</span>
+            <span className={jailStyle}>{jail}</span>
+            <span className={highCommissionStyle}>{highCommission}</span>
           </div>
         </div>
       </div>
 
       {/* ВЕС ГОЛОСА */}
-      <div className="validators__row-cell validators__row-cell_right">
-        <div className="validators__voting-power">
-          <span className="validators__stake">{stake}<span>{symbol}</span></span>
-          <span className="validators__power">{votingPower}</span>
-        </div>
+      <div className="table-row__voting-power">
+        <span className="table-row__stake">{stake}<span>{symbol}</span></span>
+        <span className="table-row__power">{votingPower}</span>
       </div>
 
       {/* КОМИССИЯ */}
-      <div className="validators__row-cell validators__row-cell_right">
-        <span className="validators__commission">{commission}</span>
-      </div>
+      <span className="table-row__commission">{commission}</span>
     </div>
   )
 

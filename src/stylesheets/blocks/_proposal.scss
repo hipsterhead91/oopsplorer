@@ -1,0 +1,22 @@
+.proposal {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 200px;
+  padding: 20px 16px 40px 16px;
+  margin: 12px 0 0 0;
+  background-color: $white;
+  border-radius: 8px;
+}
+
+.proposal__title {
+  margin: 0 0 12px 0;
+  font-weight: 600;
+  font-size: 18px;
+  color: $gray-darker;
+}
+
+.proposal__description {
+  font-weight: 400;
+  font-size: 14px;
+  color: $gray-darker;
+}

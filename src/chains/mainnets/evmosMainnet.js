@@ -15,7 +15,8 @@ const evmosMainnet = {
     "https://api.evmos.silknodes.io",
     "https://evmos-rest.publicnode.com",
   ],
-  description: "A Cosmos SDK-based IBC & Ethereum Virtual Machine-compatible blockchain."
+  description: "A Cosmos SDK-based IBC & Ethereum Virtual Machine-compatible blockchain.",
+  logo: "/logos/evmos.png"
 }
 
 export default evmosMainnet;

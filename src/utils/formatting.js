@@ -13,8 +13,24 @@ export function cutDecimals(tokens, decimals) {
     : '0'
 }
 
+// ОБРЕЗАТЬ ЛИШНИЕ СИМВОЛЫ
+// Токены строкой, лишние символы числом. Возвращает строку.
 export function cutExtra(tokens, extraSymbols) {
   return tokens.slice(0, -extraSymbols);
+}
+
+// ОТФОРМАТИРОВАТЬ ЦЕНУ
+// Принимает число, возвращает число.
+export function tweakPrice(price) {
+  if (price < 0.00000001) return price.toFixed(10)
+  if (price < 0.0000001) return price.toFixed(9)
+  if (price < 0.000001) return price.toFixed(8)
+  if (price < 0.00001) return price.toFixed(7)
+  if (price < 0.0001) return price.toFixed(6)
+  if (price < 0.001) return price.toFixed(5)
+  if (price < 0.01) return price.toFixed(4)
+  if (price < 0.1) return price.toFixed(3)
+  else return price.toFixed(2)
 }
 
 // УПОРЯДОЧИТЬ ВАЛИДАТОРОВ ПО СТЕЙКУ
@@ -77,7 +93,9 @@ export function filterInactive(validators) {
 // ОТФОРМАТИРОВАТЬ КОМИССИЮ
 // Примечание: принимает строку, возвращает строку.
 export function tweakCommission(commission) {
-  const commissionUpdated = (Number(commission) * 100).toFixed(2); // метод toFixed() возвращает строку
-  const commissionAsNumber = Number(commissionUpdated);
-  return commissionAsNumber.toString();
+  // const commissionUpdated = (Number(commission) * 100).toFixed(2); // метод toFixed() возвращает строку
+  // const commissionAsNumber = Number(commissionUpdated);
+  // return commissionAsNumber.toString();
+
+  return (Number(commission) * 100).toFixed(2)
 }

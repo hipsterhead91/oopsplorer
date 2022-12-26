@@ -27,38 +27,38 @@ function TableHeader(props) {
   }
 
   return (
-    <div className="validators__header">
+    <div className="table-header">
 
       {/* VALIDATOR */}
-      <div className="validators__header-cell">
-        <div className="validators__sort-button">
-          <div className="validators__sort-icon">
-            <span className="validators__sort-icon-asc"></span>
-            <span className="validators__sort-icon-dsc"></span>
+      <div id="th-validator" className="table-header__cell">
+        <div className="table-header__sort-button">
+          <div className="table-header__sort-icon">
+            <span className="table-header__sort-icon-asc"></span>
+            <span className="table-header__sort-icon-dsc"></span>
           </div>
-          <span className="validators__column-name">Validator</span>
+          <span className="table-header__column-name">Validator</span>
         </div>
       </div>
 
       {/* VOTING POWER */}
-      <div className="validators__header-cell validators__header-cell_right">
-        <div onClick={() => sortNumbers('tokens_num')} className="validators__sort-button">
-          <div className="validators__sort-icon">
-            <span ref={vpAsc} className="validators__sort-icon-asc"></span>
-            <span ref={vpDsc} className="validators__sort-icon-dsc"></span>
+      <div id="th-power" className="table-header__cell">
+        <div onClick={() => sortNumbers('tokens_num')} className="table-header__sort-button">
+          <div className="table-header__sort-icon">
+            <span ref={vpAsc} className="table-header__sort-icon-asc"></span>
+            <span ref={vpDsc} className="table-header__sort-icon-dsc"></span>
           </div>
-          <span className="validators__column-name">Voting Power</span>
+          <span className="table-header__column-name">Voting Power</span>
         </div>
       </div>
 
       {/* COMMISSION */}
-      <div className="validators__header-cell validators__header-cell_right">
-        <div onClick={() => sortNumbers('commission_num')} className="validators__sort-button">
-          <div className="validators__sort-icon">
-            <span ref={cmmAsc} className="validators__sort-icon-asc"></span>
-            <span ref={cmmDsc} className="validators__sort-icon-dsc"></span>
+      <div id="th-commission" className="table-header__cell">
+        <div onClick={() => sortNumbers('commission_num')} className="table-header__sort-button">
+          <div className="table-header__sort-icon">
+            <span ref={cmmAsc} className="table-header__sort-icon-asc"></span>
+            <span ref={cmmDsc} className="table-header__sort-icon-dsc"></span>
           </div>
-          <span className="validators__column-name">Commission</span>
+          <span className="table-header__column-name">Commission</span>
         </div>
       </div>
 

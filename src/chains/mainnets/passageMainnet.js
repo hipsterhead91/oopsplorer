@@ -12,7 +12,8 @@ const passageMainnet = {
     "https://passage-api.polkachu.com",
     "https://api.passage.nodestake.top"
   ],
-  description: "Passage is building a virtual 3D world/metaverse that is mainly powered by Unreal Engine 5, Akash, and IBC."
+  description: "Passage is building a virtual 3D world/metaverse that is mainly powered by Unreal Engine 5, Akash, and IBC.",
+  logo: "/logos/passage.png"
 }
 
 export default passageMainnet;

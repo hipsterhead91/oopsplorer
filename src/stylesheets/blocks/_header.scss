@@ -8,7 +8,6 @@
   flex-direction: column;
   align-items: center;
   background-color: $color-main;
-  border-bottom: 1px solid $color-background;
 }
 
 .header__container {
@@ -34,11 +33,11 @@
   font-weight: 900;
   font-size: 32px;
   line-height: 100%;
-  color: $whitest;
+  color: $white;
 
   span {
     margin: 0 2px 0 0;
-    color: $color-accent;
+    color: $color-second;
   }
 }
 
@@ -52,39 +51,42 @@
 }
 
 .header__chains {
+  width: calc((100% - 36px) / 4);
   position: relative;
   z-index: 20;
   user-select: none;
 }
 
 .header__chain-switcher {
-  height: 34px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 38px;
   display: flex;
   align-items: center;
-  border: 2px solid $color-accent;
-  background-color: $color-main;
+  border: 2px solid $color-second;
   border-radius: 4px;
   cursor: pointer;
+  background-color: $color-main;
 }
 
 .header__current-chain {
-  min-width: 164px;
+  width: calc(100% - 34px);
   margin: 0 12px 0 12px;
   font-size: 18px;
-  color: $whitest;
+  color: $white;
   text-align: center;
 }
 
 .header__switcher {
-  width: 30px;
+  width: 34px;
   height: 34px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 2px solid $color-accent;
+  border: 2px solid $color-second;
   border-radius: 2px;
-  background-color: $color-accent;
+  background-color: $color-second;
 }
 
 .header__switcher-arrow {
@@ -104,23 +106,29 @@
 }
 
 .header__chain-list {
-  position: absolute;
-  top: 68px;
-  right: 0;
+  position: fixed;
+  top: 88px;
+  left: 50%;
+  transform: translate(-50%);
   box-sizing: border-box;
   width: 100vw;
   max-width: 1152px;
-  padding: 28px 20px 28px 20px;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-column-gap: 20px;
-  grid-row-gap: 24px;
+  padding: 60px 36px 60px 36px;
+  display: flex;
+  flex-direction: column;
   border-radius: 8px;
-  background-color: $color-accent;
+  background-color: $color-second;
 
   &_hidden {
     display: none;
   }
+}
+
+.header__chain-list-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-column-gap: 20px;
+  grid-row-gap: 24px;
 }
 
 .header__chain {
@@ -130,23 +138,23 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 2px solid rgba($blackest, 0.1);
+  border: 2px solid rgba($black, 0.2);
   border-radius: 8px;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 16px;
   color: $gray-darkest;
   text-decoration: none;
   cursor: pointer;
   transition: linear 0.2s;
   
   &_selected {
-    color: $color-second;
-    border: 2px solid rgba($color-second, 0.4);
+    color: $color-accent;
+    border: 2px solid rgba($color-accent, 0.5);
   }
 
   &:hover {
-    color: $color-second;
-    border: 2px solid rgba($color-second, 0.4);
+    color: $color-accent;
+    border: 2px solid rgba($color-accent, 0.5);
   }
 
   span {

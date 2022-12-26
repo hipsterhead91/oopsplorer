@@ -6,22 +6,29 @@ import NotFound from "./NotFound";
 import Chain from "./Chain";
 import Validators from "./Validators";
 import Validator from "./Validator";
+import Proposals from "./Proposals";
 import { chains } from "../chains/chains";
 import CoinsContext from "../contexts/CoinsContext";
 import CurrentChainContext from "../contexts/CurrentChainContext";
 import { getPath } from "../utils/formatting";
 import coinGecko from "../api/CoinGeckoApi";
-
 function App() {
 
   const [currentChain, setCurrentChain] = useState(null);
   const [coins, setCoins] = useState(null);
 
   // ПОЛУЧАЕМ ИНФОРМАЦИЮ О МОНЕТАХ
-  useEffect(() => {
+  const setCoinsData = () => {
     coinGecko.getCoins()
       .then(result => setCoins(result))
       .catch(error => setCoins(null))
+  };
+
+  // ОБНОВЛЯЕМ ДАННЫЕ ПО ТАЙМЕРУ
+  useEffect(() => {
+    setCoinsData();
+    let coinsTimer = setInterval(setCoinsData, 60000); // 60 сек.
+    return () => clearTimeout(coinsTimer);
   }, [])
 
   return (
@@ -39,6 +46,7 @@ function App() {
                   <Route path="validators" element={<Validators />}>
                     <Route path=":valoper" element={<Validator />} />
                   </Route>
+                  <Route path="proposals" element={<Proposals />} />
                 </Route>
               })}
 

@@ -13,7 +13,8 @@ const crescentMainnet = {
     "https://mainnet.crescent.network:1317",
     "https://api.crescent.pupmos.network"
   ],
-  description: "Crescent Network is a Cosmos SDK-based DeFi hub powered by $CRE token and Inter-blockchain Communication protocol."
+  description: "Crescent Network is a Cosmos SDK-based DeFi hub powered by $CRE token and Inter-blockchain Communication protocol.",
+  logo: "/logos/crescent.png"
 }
 
 export default crescentMainnet;

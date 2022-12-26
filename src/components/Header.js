@@ -29,15 +29,15 @@ function Header(props) {
     window.scrollTo(0, 0); // прокрутка страницы наверх
   }
 
-  const chainText = (currentChain === null) ? 'Select Chain' : `${currentChain.name} ${currentChain.isMain ? '' : 'Testnet'}`;
+  const chainText = (currentChain === null) ? 'Chain is not selected' : `${currentChain.name} ${currentChain.isMain ? '' : 'Testnet'}`;
   const chainButtonStyle = ({ isActive }) => isActive ? "header__chain header__chain_selected" : "header__chain";
 
   return (
     <header className="header">
       <div className="header__container">
         <Link to="/" onClick={() => { switchChain(null) }} className="header__logo">
-          <div className="header__logo-top"><span>OOPS</span>plorer</div>
-          <div className="header__logo-bottom">Humblest blockchain explorer ever</div>
+          <div className="header__logo-top"><span>Oops!</span>plorer</div>
+          <div className="header__logo-bottom">humblest blockchain explorer ever</div>
         </Link>
         <div className="header__chains">
           <div onClick={toggleChainList} className="header__chain-switcher">
@@ -45,13 +45,13 @@ function Header(props) {
             <div className="header__switcher"><span ref={arrow} className="header__switcher-arrow" /></div>
           </div>
           <div ref={chainList} className="header__chain-list header__chain-list_hidden">
-
-            {chains.map(chain => {
-              return <NavLink key={chain.chain} to={`/${getPath(chain)}/validators`} onClick={() => { switchChain(chain) }} className={chainButtonStyle}>
-                {`${chain.name} ${chain.isMain ? '' : 'Testnet'}`} <span>({chain.chain})</span>
-              </NavLink>
-            })}
-
+            <div className="header__chain-list-container">
+              {chains.map(chain => {
+                return <NavLink key={chain.chain} to={`/${getPath(chain)}/validators`} onClick={() => { switchChain(chain) }} className={chainButtonStyle}>
+                  {`${chain.name} ${chain.isMain ? '' : 'Testnet'}`} <span>({chain.chain})</span>
+                </NavLink>
+              })}
+            </div>
           </div>
         </div>
       </div>
