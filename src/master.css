@@ -658,7 +658,7 @@ html {
   width: 100%;
 }
 
-.validators__switcher-wrapper {
+.validators__navigation {
   width: 100%;
   margin: 0 0 20px 0;
   display: -ms-grid;
@@ -702,6 +702,75 @@ html {
 .validators__switcher-button_selected {
   color: #fafafa;
   background-color: rgba(13, 101, 115, 0.6);
+}
+
+.validators__find {
+  -ms-grid-column: 5;
+      grid-column-start: 5;
+  grid-column-end: 9;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 12px;
+  width: 100%;
+}
+
+.validators__find-input {
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  grid-column-end: 4;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  min-height: 40px;
+  padding: 0 12px 0 12px;
+  border: 2px solid rgba(13, 101, 115, 0.6);
+  border-radius: 8px;
+  outline: none;
+  background-color: #fafafa;
+  font-weight: 400;
+  font-size: 16px;
+  color: #464646;
+  text-align: center;
+}
+
+.validators__find-input::-webkit-input-placeholder {
+  font-weight: 300;
+  color: #a0a0a0;
+}
+
+.validators__find-input:-ms-input-placeholder {
+  font-weight: 300;
+  color: #a0a0a0;
+}
+
+.validators__find-input::-ms-input-placeholder {
+  font-weight: 300;
+  color: #a0a0a0;
+}
+
+.validators__find-input::placeholder {
+  font-weight: 300;
+  color: #a0a0a0;
+}
+
+.validators__find-button {
+  -ms-grid-column: 4;
+      grid-column-start: 4;
+  grid-column-end: 5;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  min-height: 40px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  background-color: rgba(13, 101, 115, 0.6);
+  font-weight: 600;
+  font-size: 16px;
+  color: #fafafa;
+  cursor: pointer;
 }
 
 .validators__table {

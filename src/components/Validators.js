@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useOutletContext, Outlet } from "react-router-dom";
 import getAvatarsData from "../api/getAvatarsData";
 import { sortByTokens, addRanks, addVotingPower, addAvatars, filterActive, filterInactive } from "../utils/formatting";
@@ -14,6 +14,8 @@ function Validators() {
   const [activeValidators, setActiveValidators] = useState([]);
   const [inactiveValidators, setInactiveValidators] = useState([]);
   const [shownValidators, setShownValidators] = useState([]);
+  const [shownValidatorsBackup, setShownValidatorsBackup] = useState([]); // нужен для отката после фильтраций
+  const filterInput = useRef();
 
   // ПОЛУЧАЕМ АВАТАРЫ В МАССИВЕ ОБЪЕКТОВ
   useEffect(() => {
@@ -44,6 +46,7 @@ function Validators() {
   // РЕНДЕРИМ АКТИВНЫХ ВАЛИДАТОРОВ КОГДА ОНИ ПОЛУЧЕНЫ
   useEffect(() => {
     setShownValidators(activeValidators);
+    setShownValidatorsBackup(activeValidators);
   }, [activeValidators])
 
   // СБРАСЫВАЕМ НАСТРОЙКИ ПРИ ПЕРЕКЛЮЧЕНИИ СЕТИ
@@ -51,15 +54,22 @@ function Validators() {
     setIsCurrentSetActive(true);
   }, [chain])
 
+  // СБРАСЫВАЕМ ИНПУТ ФИЛЬТРА ВАЛИДАТОРОВ
+  useEffect(() => {
+    filterInput.current.value = '';
+  }, [chain, isCurrentSetActive])
+
   // ПЕРЕКЛЮЧАЕМСЯ НА АКТИВНЫЙ СЕТ
   const switchToActive = () => {
     setShownValidators(activeValidators);
+    setShownValidatorsBackup(activeValidators);
     setIsCurrentSetActive(true);
   }
 
   // ПЕРЕКЛЮЧАЕМСЯ НА НЕАКТИВНЫЙ СЕТ
   const switchToInactive = () => {
     setShownValidators(inactiveValidators);
+    setShownValidatorsBackup(inactiveValidators);
     setIsCurrentSetActive(false);
   }
 
@@ -79,16 +89,33 @@ function Validators() {
     });
   }
 
+  // ФИЛЬТРУЕМ ВАЛИДАТОРОВ ПО МОНИКЕРУ
+  const filterByMoniker = (event) => {
+    const value = event.target.value.toLowerCase();
+    const filtered = shownValidatorsBackup.filter(validator => validator.description.moniker.toLowerCase().includes(value));
+    setShownValidators(filtered);
+  }
+
+  // СБРАСЫВАЕМ ФИЛЬТР
+  const clearFilter = () => {
+    setShownValidators(shownValidatorsBackup);
+    filterInput.current.value = '';
+  }
+
   const activeButtonStyle = isCurrentSetActive ? "validators__switcher-button validators__switcher-button_selected" : "validators__switcher-button"
   const inactiveButtonStyle = isCurrentSetActive ? "validators__switcher-button" : "validators__switcher-button validators__switcher-button_selected"
 
   return (
     <div className="validators">
       <Outlet context={[chain, allValidators]} />
-      <div className="validators__switcher-wrapper">
+      <div className="validators__navigation">
         <div className="validators__switcher">
           <button onClick={switchToActive} className={activeButtonStyle}>Active</button>
           <button onClick={switchToInactive} className={inactiveButtonStyle}>Inactive</button>
+        </div>
+        <div className="validators__find">
+          <input ref={filterInput} onChange={event => filterByMoniker(event)} className="validators__find-input" type="text" placeholder="Search for validator by moniker"></input>
+          <button onClick={clearFilter} className="validators__find-button">Clear</button>
         </div>
       </div>
       <div className="validators__table">
