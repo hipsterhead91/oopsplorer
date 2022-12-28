@@ -4,20 +4,21 @@ function Homepage() {
 
   return (
     <section className="homepage">
-      <h1 className="homepage__heading">Welcome to Oops!plorer</h1>
-      <p className="homepage__paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      <p className="homepage__paragraph">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      <p className="homepage__paragraph">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-      <p className="homepage__paragraph">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      <p className="homepage__paragraph">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-      <p className="homepage__paragraph">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-      <p className="homepage__paragraph">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
-      <p className="homepage__paragraph">Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?</p>
-      <p className="homepage__paragraph">Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
-      <p className="homepage__paragraph">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga</p>
-      <p className="homepage__paragraph">Et harum quidem rerum facilis est et expedita distinctio.</p>
-      <p className="homepage__paragraph">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
-      <p className="homepage__paragraph">Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
+      <h1 className="homepage__heading">Hello,</h1>
+      <p className="homepage__paragraph">And welcome to <span className="homepage__bold"><span>Oops!</span>plorer</span>.</p>
+      <p className="homepage__paragraph">This humble app is designed to browse blockchains built on <a className="homepage__link" href="https://v1.cosmos.network/sdk" target="_blank">Cosmos SDK</a>; also, it's a training project where I'm learning to JavaScript, React and some other technologies, so please don't be too hard on it.</p>
+      <p className="homepage__paragraph">To start exploring, just <span className="homepage__bold">select a chain in the top right corner of your screen</span>. If you find some issues or if you have any suggestions about how to improve this website, feel free to send me an email: <a className="homepage__link" href="mailto: virtualxself@gmail.com">virtualxself@gmail.com</a>.</p>
+      <p className="homepage__paragraph">Now, a bit of information about <span className="homepage__bold"><span>Oops!</span>plorer</span>:</p>
+      <ul className="homepage__list">
+        <li className="homepage__list-element">When you select a chain, it fetches an API and shows some statistics about it, such as inflation level, days to unbond, current block height (updating every few seconds), number of all bonded tokens, etc. If some of this data isn't available, you'll see an <span className="homepage__error">"Oops! something went wrong"</span> error — unfortunately, each blockchain has its own features that do not allow me to use some methods on it, so there's nothing I can do about it. The same error is possible if API doesn't work right now — in this case, you can switch to another chain or wait a little.</li>
+        <li className="homepage__list-element">Also, it shows current token price in USD taken from <a className="homepage__link" href="https://www.coingecko.com/" target="_blank">CoinGecko</a> via their own API (the second one in this project).</li>
+        <li className="homepage__list-element">Besides common chain info, you'll see a set of current validators presented as a table. You can switch between active and inactive set, sort table columns, filter validators by their monikers and, for convenience, fast scroll up and down using buttons in the bottom right corner.</li>
+        <li className="homepage__list-element">You can click to any moniker to see its validator operator address and additional info (if it's provided by validator) such as website, security contact and other details.</li>
+        <li className="homepage__list-element">Validator avatars are taken from <a className="homepage__link" href="https://github.com/cosmostation/cosmostation_token_resource/tree/master/moniker" target="_blank">Cosmostation repository</a> via <a className="homepage__link" href="https://github.com/octokit/octokit.js" target="_blank">octokit.js</a> — official GitHub REST API client, the third and the last one in <span className="homepage__bold"><span>Oops!</span>plorer</span> at this moment. Also, blockchain descriptions are from Cosmostation too, and to be honest, some logics and design elements of their <a className="homepage__link" href="https://www.mintscan.io/evmos/validators" target="_blank">Mintscan</a> were the things that inspired me to make my own explorer. I hope Cosmostation is not offended.</li>
+        <li className="homepage__list-element">If selected chain has active proposals, you can click on it to see details (this feature is WIP). Click on validators number to return to data table.</li>
+        <li className="homepage__list-element">This site is designed for pretty wide screens like mine and has no adaptive layout yet — if you try to see it via tablet or phone, I guess you'll be disappointed. I know I should fix it, but... I did enough adaptive designes earlier, and now my focus is on JS/React, not SCSS. But maybe I'll do it later. </li>
+      </ul>
+      <p className="homepage__paragraph">Thank you for reading this and have a good day, sir!</p>
     </section>
   );
 }

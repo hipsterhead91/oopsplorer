@@ -6,18 +6,50 @@
 }
 
 .homepage__heading {
-  margin: 0 0 20px 0;
+  margin: 0 0 12px 0;
   font-weight: 700;
   font-size: 32px;
   color: $gray-darker;
 }
 
+
 .homepage__paragraph {
+  margin: 0 0 12px 0;
   font-weight: 400;
   font-size: 16px;
   color: $gray-darkest;
+}
 
-  &:not(:last-child) {
-    margin: 0 0 8px 0;
+.homepage__bold {
+  font-weight: 600;
+  color: $gray-darker;
+}
+
+.homepage__link {
+  font-weight: 500;
+  font-size: 16px;
+  color: $color-main;
+  transition: linear 0.2s;
+
+  &:hover {
+    color: $color-accent;
   }
+}
+
+.homepage__list {
+  margin: 0 0 12px 0;
+}
+
+.homepage__list-element {
+  box-sizing: border-box;
+  margin: 0 0 12px 20px;
+  font-weight: 400;
+  font-size: 16px;
+  color: $gray-darkest;
+}
+
+.homepage__error {
+  font-weight: 400;
+  font-size: 16px;
+  color: $color-accent;
 }

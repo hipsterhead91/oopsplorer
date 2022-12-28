@@ -11,27 +11,29 @@
   font-weight: 900;
   font-size: 248px;
   line-height: 100%;
+  color: $gray-darkest;
 }
 
 .not-found__paragraph {
   font-weight: 600;
   font-size: 18px;
-  color: $color-main;
+  color: $gray-darker;
 
-  &:not(:last-child) {
-    margin: 0 0 8px 0;
+  span {
+    color: $color-accent;
   }
 }
 
 .not-found__link {
   position: relative;
   left: -20px;
-  margin: 48px 0 0 0;
+  width: max-content;
+  margin: 48px 12px 0 auto;
   font-weight: 600;
   font-size: 18px;
   text-decoration: none;
   text-align: end;
-  color: $color-accent;
+  color: $color-main;
   transition: linear 0.2s;
 
   span {
@@ -43,6 +45,6 @@
   }
 
   &:hover {
-    color: $gray-darkest;
+    color: $color-accent;
   }
 }
