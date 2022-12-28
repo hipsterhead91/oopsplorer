@@ -11,7 +11,7 @@ function Proposal(props) {
   return (
     <div className="proposal">
       <h3 className="proposal__title">{proposal.content.title}</h3>
-      <p className="proposal__description">{proposal.content.description}</p>
+      {/* <p className="proposal__description">{proposal.content.description}</p> */}
     </div>
   )
 }

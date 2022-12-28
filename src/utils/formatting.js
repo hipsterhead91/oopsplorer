@@ -93,9 +93,5 @@ export function filterInactive(validators) {
 // ОТФОРМАТИРОВАТЬ КОМИССИЮ
 // Примечание: принимает строку, возвращает строку.
 export function tweakCommission(commission) {
-  // const commissionUpdated = (Number(commission) * 100).toFixed(2); // метод toFixed() возвращает строку
-  // const commissionAsNumber = Number(commissionUpdated);
-  // return commissionAsNumber.toString();
-
   return (Number(commission) * 100).toFixed(2)
 }

@@ -92,7 +92,7 @@ function Validators() {
         </div>
       </div>
       <div className="validators__table">
-        <TableHeader shownValidators={shownValidators} setShownValidators={setShownValidators} />
+        <TableHeader shownValidators={shownValidators} setShownValidators={setShownValidators} chain={chain} isCurrentSetActive={isCurrentSetActive} />
         <div className="validators__rows">
           {shownValidators.map(validator => {
             return <TableRow key={validator.operator_address} validators={validator} chain={chain} />

@@ -875,38 +875,46 @@ html {
           flex-direction: column;
 }
 
-.table-header__sort-icon-asc {
+.table-header__sort-icon span {
   position: absolute;
-  top: -1px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   width: 6px;
   height: 6px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.table-header__sort-icon span:first-child {
+  top: -1px;
   border-left: 2px solid #add8e6;
   border-top: 2px solid #add8e6;
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
 }
 
-.table-header__sort-icon-asc_hidden {
-  display: none;
-}
-
-.table-header__sort-icon-dsc {
-  position: absolute;
+.table-header__sort-icon span:last-child {
   bottom: -1px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  width: 6px;
-  height: 6px;
   border-right: 2px solid #add8e6;
   border-bottom: 2px solid #add8e6;
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
 }
 
-.table-header__sort-icon-dsc_hidden {
-  display: none;
+.table-header__sort-icon_asc span:first-child {
+  border-left: 2px solid #0d6573;
+  border-top: 2px solid #0d6573;
+}
+
+.table-header__sort-icon_asc span:last-child {
+  border-right: 2px solid #e8c413;
+  border-bottom: 2px solid #e8c413;
+}
+
+.table-header__sort-icon_dsc span:first-child {
+  border-left: 2px solid #e8c413;
+  border-top: 2px solid #e8c413;
+}
+
+.table-header__sort-icon_dsc span:last-child {
+  border-right: 2px solid #0d6573;
+  border-bottom: 2px solid #0d6573;
 }
 
 .table-header__column-name {
@@ -1438,7 +1446,6 @@ html {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   width: 100%;
-  min-height: 200px;
   padding: 20px 16px 40px 16px;
   margin: 12px 0 0 0;
   background-color: #fafafa;
