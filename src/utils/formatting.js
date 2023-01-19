@@ -20,7 +20,7 @@ export function cutExtra(tokens, extraSymbols) {
 }
 
 // ОТФОРМАТИРОВАТЬ ЦЕНУ
-// Принимает число, возвращает число.
+// Принимает число, возвращает строку.
 export function tweakPrice(price) {
   if (price < 0.00000001) return price.toFixed(10)
   if (price < 0.0000001) return price.toFixed(9)
@@ -77,14 +77,14 @@ export function addVotingPower(validators, bondedTotal) {
 }
 
 // ОТФИЛЬТРОВАТЬ АКТИВНЫХ
-// Примечание: принимает массив валидаторов, возвращает его же, не отфильтрованным.
+// Примечание: принимает массив валидаторов, возвращает его же, но отфильтрованным.
 export function filterActive(validators) {
   const active = validators.filter(validator => validator.status === 'BOND_STATUS_BONDED');
   return active;
 }
 
 // ОТФИЛЬТРОВАТЬ НЕАКТИВНЫХ
-// Примечание: принимает массив валидаторов, возвращает его же, не отфильтрованным.
+// Примечание: принимает массив валидаторов, возвращает его же, но отфильтрованным.
 export function filterInactive(validators) {
   const inactive = validators.filter(validator => validator.status !== 'BOND_STATUS_BONDED');
   return inactive;

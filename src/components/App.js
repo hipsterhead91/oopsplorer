@@ -12,8 +12,9 @@ import CoinsContext from "../contexts/CoinsContext";
 import CurrentChainContext from "../contexts/CurrentChainContext";
 import { getPath } from "../utils/formatting";
 import coinGecko from "../api/CoinGeckoApi";
-function App() {
 
+function App() {
+  
   const [currentChain, setCurrentChain] = useState(null);
   const [coins, setCoins] = useState(null);
 
@@ -23,7 +24,7 @@ function App() {
       .then(result => setCoins(result))
       .catch(error => setCoins(null))
   };
-
+  
   // ОБНОВЛЯЕМ ДАННЫЕ ПО ТАЙМЕРУ
   useEffect(() => {
     setCoinsData();

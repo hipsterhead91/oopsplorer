@@ -15,6 +15,7 @@ function Validator() {
   useEffect(() => {
     const validator = allValidators.find(val => val.operator_address === currentValoper);
     setValidator(validator);
+    console.log(validator)
   }, [chain, allValidators, currentValoper])
 
   let [avatar, rank, moniker, valoper, activity, activityStyle, bond, bondStyle, jail, jailStyle, highCommission, highCommissionStyle, stake, symbol, votingPower, commission, website, securityContact, details] = '';

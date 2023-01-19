@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Outlet, useOutletContext, Link } from "react-router-dom";
 import CosmosRestApi from "../api/CosmosRestApi";
 import CoinsContext from "../contexts/CoinsContext";
-import { cutDecimals, cutExtra, tweakPrice, filterActive, getPath } from "../utils/formatting";
+import { cutDecimals, cutExtra, tweakPrice, filterActive } from "../utils/formatting";
 
 function Chain(props) {
 
