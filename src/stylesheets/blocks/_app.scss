@@ -21,4 +21,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media screen and (max-width: 768px) {
+    padding: 72px 16px 0 16px;
+  }
 }
