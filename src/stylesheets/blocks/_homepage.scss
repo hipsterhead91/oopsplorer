@@ -1,8 +1,25 @@
 .homepage {
-  padding: 40px 0 0 0;
+  box-sizing: border-box;
   width: 100%;
+  padding: 40px 8px 80px 8px;
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 1200px) {
+    padding: 40px 8px 60px 8px;
+  }
+
+  @media (max-width: 576px) {
+    padding: 24px 4px 48px 4px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 24px 4px 32px 4px;
+  }
+
+  @media (max-width: 360px) {
+    padding: 16px 4px 24px 4px;
+  }
 }
 
 .homepage__heading {
@@ -10,14 +27,23 @@
   font-weight: 700;
   font-size: 32px;
   color: $gray-darker;
+
+  @media (max-width: 576px) {
+    margin: 0 0 8px 0;
+    font-size: 24px;
+  }
 }
 
-
 .homepage__paragraph {
-  margin: 0 0 12px 0;
+  margin: 0 0 16px 0;
   font-weight: 400;
   font-size: 16px;
   color: $gray-darkest;
+
+  @media (max-width: 576px) {
+    margin: 0 0 12px 0;
+    font-size: 14px;
+  }
 }
 
 .homepage__bold {
@@ -34,22 +60,41 @@
   &:hover {
     color: $color-accent;
   }
-}
 
-.homepage__list {
-  margin: 0 0 12px 0;
+  @media (max-width: 576px) {
+    font-size: 14px;
+  }
 }
 
 .homepage__list-element {
   box-sizing: border-box;
-  margin: 0 0 12px 20px;
+  margin: 0 0 8px 20px;
   font-weight: 400;
   font-size: 16px;
   color: $gray-darkest;
+
+  @media (max-width: 576px) {
+    margin: 0 0 8px 20px;
+    font-size: 14px;
+  }
 }
 
 .homepage__error {
   font-weight: 400;
   font-size: 16px;
   color: $color-accent;
+
+  @media (max-width: 576px) {
+    font-size: 14px;
+  }
+}
+
+.homepage__divider {
+  width: 100%;
+  margin: 20px 0 28px 0;
+  border-top: 1px dashed $gray;
+
+  @media (max-width: 480px) {
+    margin: 16px 0 24px 0;
+  }
 }

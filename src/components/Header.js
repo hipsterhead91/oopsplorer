@@ -29,7 +29,7 @@ function Header(props) {
     window.scrollTo(0, 0); // прокрутка страницы наверх
   }
 
-  const chainText = (currentChain === null) ? 'Chain is not selected' : `${currentChain.name} ${currentChain.isMain ? '' : 'Testnet'}`;
+  const chainText = (currentChain === null) ? 'Select chain' : `${currentChain.name} ${currentChain.isMain ? '' : 'Testnet'}`;
   const chainButtonStyle = ({ isActive }) => isActive ? "header__chain header__chain_selected" : "header__chain";
 
   return (

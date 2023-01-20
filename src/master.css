@@ -478,7 +478,7 @@ html {
 
 @media (max-width: 480px) {
   .footer__container {
-    padding: 24px 0 24px 0;
+    padding: 20px 0 20px 0;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -548,8 +548,10 @@ html {
 }
 
 .homepage {
-  padding: 40px 0 0 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   width: 100%;
+  padding: 40px 8px 80px 8px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -559,6 +561,30 @@ html {
           flex-direction: column;
 }
 
+@media (max-width: 1200px) {
+  .homepage {
+    padding: 40px 8px 60px 8px;
+  }
+}
+
+@media (max-width: 576px) {
+  .homepage {
+    padding: 24px 4px 48px 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .homepage {
+    padding: 24px 4px 32px 4px;
+  }
+}
+
+@media (max-width: 360px) {
+  .homepage {
+    padding: 16px 4px 24px 4px;
+  }
+}
+
 .homepage__heading {
   margin: 0 0 12px 0;
   font-weight: 700;
@@ -566,11 +592,25 @@ html {
   color: #464646;
 }
 
+@media (max-width: 576px) {
+  .homepage__heading {
+    margin: 0 0 8px 0;
+    font-size: 24px;
+  }
+}
+
 .homepage__paragraph {
-  margin: 0 0 12px 0;
+  margin: 0 0 16px 0;
   font-weight: 400;
   font-size: 16px;
   color: #282828;
+}
+
+@media (max-width: 576px) {
+  .homepage__paragraph {
+    margin: 0 0 12px 0;
+    font-size: 14px;
+  }
 }
 
 .homepage__bold {
@@ -590,23 +630,50 @@ html {
   color: #a34061;
 }
 
-.homepage__list {
-  margin: 0 0 12px 0;
+@media (max-width: 576px) {
+  .homepage__link {
+    font-size: 14px;
+  }
 }
 
 .homepage__list-element {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  margin: 0 0 12px 20px;
+  margin: 0 0 8px 20px;
   font-weight: 400;
   font-size: 16px;
   color: #282828;
+}
+
+@media (max-width: 576px) {
+  .homepage__list-element {
+    margin: 0 0 8px 20px;
+    font-size: 14px;
+  }
 }
 
 .homepage__error {
   font-weight: 400;
   font-size: 16px;
   color: #a34061;
+}
+
+@media (max-width: 576px) {
+  .homepage__error {
+    font-size: 14px;
+  }
+}
+
+.homepage__divider {
+  width: 100%;
+  margin: 20px 0 28px 0;
+  border-top: 1px dashed #828282;
+}
+
+@media (max-width: 480px) {
+  .homepage__divider {
+    margin: 16px 0 24px 0;
+  }
 }
 
 .not-found {
