@@ -13,6 +13,10 @@
   &:last-child {
     border-radius: 0 0 8px 8px;
   }
+
+  @media (max-width: 992px) {
+    min-height: 54px;
+  }
 }
 
 .table-row__cell {
@@ -41,6 +45,10 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+
+  @media (max-width: 768px) {
+    padding: 8px 4px 8px 24px;
+  }
 }
 
 .table-row__avatar {
@@ -51,6 +59,12 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+
+  @media (max-width: 992px) {
+    width: 32px;
+    height: 32px;
+    margin: 0 8px 0 0;
+  }
 }
 
 .table-row__info {
@@ -71,6 +85,11 @@
   margin: 0 6px 0 0;
   font-size: 14px;
   color: $gray;
+
+  @media (max-width: 992px) {
+    margin: 0 4px 0 0;
+    font-size: 12px;
+  }
 }
 
 .table-row__moniker {
@@ -86,6 +105,10 @@
 
   &:hover {
     color: $color-accent;
+  }
+
+  @media (max-width: 992px) {
+    font-size: 12px;
   }
 }
 
@@ -108,6 +131,12 @@
     color: $gray-light;
     background-color: $gray-lightest;
   }
+
+  @media (max-width: 992px) {
+    padding: 2px 4px 2px 4px;
+    margin: 0 4px 0 0;
+    font-size: 10px;
+  }
 }
 
 .table-row__bond {
@@ -128,6 +157,12 @@
     color: #a19108;
     background-color: rgba($color-second, 0.3);
   }
+
+  @media (max-width: 992px) {
+    padding: 2px 4px 2px 4px;
+    margin: 0 4px 0 0;
+    font-size: 10px;
+  }
 }
 
 .table-row__jail {
@@ -142,6 +177,12 @@
   &_hidden {
     display: none;
   }
+
+  @media (max-width: 992px) {
+    padding: 2px 4px 2px 4px;
+    margin: 0 4px 0 0;
+    font-size: 10px;
+  }
 }
 
 .table-row__warning {
@@ -155,6 +196,12 @@
   &_hidden {
     display: none;
   }
+
+  @media (max-width: 992px) {
+    padding: 2px 4px 2px 4px;
+    margin: 0 4px 0 0;
+    font-size: 10px;
+  }
 }
 
 .table-row__voting-power {
@@ -167,6 +214,10 @@
   flex-direction: column;
   align-items: flex-end;
   justify-content: center;
+
+  @media (max-width: 768px) {
+    padding: 8px 24px 8px 24px;
+  }
 }
 
 .table-row__stake {
@@ -182,6 +233,15 @@
     font-size: 12px;
     color: $gray-light;
   }
+
+  @media (max-width: 992px) {
+    font-size: 14px;
+
+    span {
+      margin: 0 0 0 2px;
+      font-size: 10px;
+    }
+  }
 }
 
 .table-row__power {
@@ -189,6 +249,10 @@
   font-size: 14px;
   line-height: 100%;
   color: $gray-dark;
+
+  @media (max-width: 992px) {
+    font-size: 12px;
+  }
 }
 
 .table-row__commission {
@@ -204,4 +268,12 @@
   font-size: 16px;
   line-height: 100%;
   color: $gray-dark;
+
+  @media (max-width: 992px) {
+    font-size: 14px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 8px 24px 8px 24px;
+  }
 }

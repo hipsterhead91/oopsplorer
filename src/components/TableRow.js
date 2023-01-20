@@ -34,7 +34,7 @@ function TableRow(props) {
   const jailStyle = (validator.jailed) ? 'table-row__jail' : 'table-row__jail_hidden';
 
   // РЕНДЕР ВЫСОКОЙ КОМИССИИ
-  const highCommission = (validator.commission.commission_rates.rate > 0.1) ? 'High Commission' : '';
+  const highCommission = (validator.commission.commission_rates.rate > 0.1) ? 'High %' : '';
   const highCommissionStyle = (validator.commission.commission_rates.rate > 0.1) ? 'table-row__warning' : 'table-row__warning_hidden';
 
   // РЕНДЕР ВЕСА ГОЛОСА

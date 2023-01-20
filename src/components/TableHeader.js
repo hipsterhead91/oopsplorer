@@ -112,7 +112,7 @@ function TableHeader(props) {
 
       {/* VALIDATOR */}
       <div id="th-validator" className="table-header__cell">
-        <div onClick={() => sortByMoniker()} className="table-header__sort-button">
+        <div onClick={() => sortByMoniker()} id="srt-validator" className="table-header__sort-button">
           <div ref={validatorSortIcon} className="table-header__sort-icon">
             <span className="table-header__sort-icon-asc"></span>
             <span className="table-header__sort-icon-dsc"></span>
@@ -123,7 +123,7 @@ function TableHeader(props) {
 
       {/* VOTING POWER */}
       <div id="th-power" className="table-header__cell">
-        <div onClick={() => sortByTokens()} className="table-header__sort-button">
+        <div onClick={() => sortByTokens()} id="srt-power" className="table-header__sort-button">
           <div ref={votingPowerSortIcon} className="table-header__sort-icon">
             <span className="table-header__sort-icon-asc"></span>
             <span className="table-header__sort-icon-dsc"></span>
@@ -134,7 +134,7 @@ function TableHeader(props) {
 
       {/* COMMISSION */}
       <div id="th-commission" className="table-header__cell">
-        <div onClick={() => sortByCommission()} className="table-header__sort-button">
+        <div onClick={() => sortByCommission()} id="srt-commission" className="table-header__sort-button">
           <div ref={commissionSortIcon} className="table-header__sort-icon">
             <span className="table-header__sort-icon-asc"></span>
             <span className="table-header__sort-icon-dsc"></span>
