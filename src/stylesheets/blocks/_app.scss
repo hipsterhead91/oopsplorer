@@ -23,14 +23,14 @@
   align-items: center;
 
   @media (max-width: 768px) {
-    padding: 72px 16px 0 16px;
-  }
-  
-  @media (max-width: 768px) {
     padding: 72px 24px 0 24px;
   }
 
+  @media (max-width: 576px) {
+    padding: 60px 24px 0 24px;
+  }
+
   @media (max-width: 360px) {
-    padding: 72px 16px 0 16px;
+    padding: 60px 16px 0 16px;
   }
 }
