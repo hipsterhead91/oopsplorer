@@ -17,6 +17,10 @@
   @media (max-width: 992px) {
     min-height: 54px;
   }
+
+  @media (max-width: 480px) {
+    min-height: 50px;
+  }
 }
 
 .table-row__cell {
@@ -72,6 +76,12 @@
     height: 32px;
     margin: 0 8px 0 0;
   }
+
+  @media (max-width: 480px) {
+    width: 34px;
+    height: 34px;
+    margin: 0 10px 0 0;
+  }
 }
 
 .table-row__info {
@@ -86,6 +96,10 @@
   display: flex;
   flex-direction: row;
   align-items: baseline;
+
+  @media (max-width: 480px) {
+    margin: 0 0 2px 0;
+  }
 }
 
 .table-row__rank {
@@ -123,6 +137,10 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+
+  @media (max-width: 480px) {
+    display: none;
+  }
 }
 
 .table-row__activity {
@@ -292,5 +310,21 @@
 
   @media (max-width: 576px) {
     display: none;
+  }
+}
+
+.table-row__vp-adaptive {
+  display: none;
+  font-size: 12px;
+  color: $gray-dark;
+
+  span {
+    margin: 0 0 0 2px;
+    font-size: 10px;
+    color: $gray-light;
+  }
+
+  @media (max-width: 480px) {
+    display: inline;
   }
 }

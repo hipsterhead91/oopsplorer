@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import noAvatar from "../images/no-avatar.png";
 import { cutDecimals, tweakCommission } from "../utils/formatting";
@@ -62,6 +62,7 @@ function TableRow(props) {
             <span className={jailStyle}>{jail}</span>
             <span className={highCommissionStyle}>{highCommission}</span>
           </div>
+          <div className="table-row__vp-adaptive">{stake}<span>{symbol}</span> ({votingPower})</div>
         </div>
       </div>
 

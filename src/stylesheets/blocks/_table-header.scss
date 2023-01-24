@@ -9,6 +9,10 @@
   @media (max-width: 992px) {
     min-height: 56px;
   }
+
+  @media (max-width: 480px) {
+    min-height: 50px;
+  }
 }
 
 .table-header__cell {

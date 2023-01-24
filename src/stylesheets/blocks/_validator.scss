@@ -3,13 +3,19 @@
   top: 0;
   left: 0;
   z-index: 5;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: rgba($color-background, 0.5);
+
+  @media (max-width: 480px) {
+    box-sizing: border-box;
+    padding: 72px 0 0 0;
+    justify-content: flex-start;
+  }
 }
 
 .validator__container {
@@ -20,6 +26,28 @@
   padding: 40px 160px 60px 32px;
   background-color: $white;
   border-radius: 8px;
+
+  @media (max-width: 1200px) {
+    max-width: 900px;
+    padding: 40px 100px 60px 32px;
+  }
+
+  @media (max-width: 992px) {
+    max-width: calc(100% - 24px - 24px);
+  }
+
+  @media (max-width: 768px) {
+    padding: 32px 60px 48px 24px;
+  }
+
+  @media (max-width: 576px) {
+    padding: 24px 48px 40px 20px;
+  }
+
+  @media (max-width: 480px) {
+    max-width: calc(100% - 12px - 12px);
+    padding: 16px 16px 28px 16px;
+  }
 }
 
 .validator__close-button {
@@ -33,6 +61,18 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
+
+  @media (max-width: 768px) {
+    top: 14px;
+    right: 20px;
+    font-size: 40px;
+  }
+
+  @media (max-width: 480px) {
+    top: 10px;
+    right: 12px;
+    font-size: 36px;
+  }
 }
 
 .validator__card {
@@ -41,6 +81,23 @@
   grid-template-columns: 80px calc(100% - 80px);
   grid-column-gap: 20px;
   grid-row-gap: 32px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 72px calc(100% - 72px);
+    grid-column-gap: 16px;
+    grid-row-gap: 16px;
+  }
+
+  @media (max-width: 576px) {
+    grid-template-columns: 60px calc(100% - 60px);
+    grid-column-gap: 12px;
+    grid-row-gap: 12px;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 100%;
+    grid-row-gap: 0;
+  }
 }
 
 .validator__avatar {
@@ -50,6 +107,20 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+
+  @media (max-width: 768px) {
+    width: 72px;
+    height: 72px;
+  }
+
+  @media (max-width: 576px) {
+    width: 60px;
+    height: 60px;
+  }
+
+  @media (max-width: 480px) {
+    display: none;
+  }
 }
 
 .validator__info {
@@ -70,6 +141,22 @@
   font-size: 28px;
   line-height: 100%;
   color: $gray-darker;
+
+  @media (max-width: 992px) {
+    font-size: 24px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 18px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 16px;
+  }
 }
   
 .validator__rank {
@@ -78,18 +165,52 @@
   line-height: 100%;
   color: $gray-lighter;
   text-align: center;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 14px;
+  }
+
+  @media (max-width: 480px) {
+    box-sizing: border-box;
+    width: max-content;
+    padding: 2px 4px 2px 4px;
+    margin: 12px 0 8px 0;
+    grid-row: 1/2;
+    font-size: 12px;
+    text-align: start;
+    border: 1px solid $gray-lighter;
+    border-radius: 4px;
+  }
 }
 
 .validator__valoper {
   margin: 6px 0 6px 0;
   font-size: 16px;
   color: $gray-darker;
+
+  @media (max-width: 768px) {
+    margin: 4px 0 6px 0;
+    font-size: 12px;
+  }
+
+  @media (max-width: 576px) {
+    margin: 2px 0 4px 0;
+    font-size: 10px;
+  }
 }
 
 .validator__statuses {
   display: flex;
   flex-direction: row;
   align-items: center;
+
+  @media (max-width: 480px) {
+    margin: 0 0 16px 0;
+  }
 }
 
 .validator__activity {
@@ -104,6 +225,18 @@
   &_inactive {
     color: $gray-light;
     background-color: $gray-lightest;
+  }
+
+  @media (max-width: 768px) {
+    padding: 3px 6px 3px 6px;
+    margin: 0 6px 0 0;
+    font-size: 12px;
+  }
+
+  @media (max-width: 576px) {
+    padding: 2px 4px 2px 4px;
+    margin: 0 4px 0 0;
+    font-size: 10px;
   }
 }
 
@@ -125,6 +258,18 @@
     color: #a19108;
     background-color: rgba($color-second, 0.3);
   }
+
+  @media (max-width: 768px) {
+    padding: 3px 6px 3px 6px;
+    margin: 0 6px 0 0;
+    font-size: 12px;
+  }
+
+  @media (max-width: 576px) {
+    padding: 2px 4px 2px 4px;
+    margin: 0 4px 0 0;
+    font-size: 10px;
+  }
 }
 
 .validator__jail {
@@ -139,6 +284,18 @@
   &_hidden {
     display: none;
   }
+
+  @media (max-width: 768px) {
+    padding: 3px 6px 3px 6px;
+    margin: 0 6px 0 0;
+    font-size: 12px;
+  }
+
+  @media (max-width: 576px) {
+    padding: 2px 4px 2px 4px;
+    margin: 0 4px 0 0;
+    font-size: 10px;
+  }
 }
 
 .validator__warning {
@@ -152,6 +309,16 @@
   &_hidden {
     display: none;
   }
+
+  @media (max-width: 768px) {
+    padding: 3px 6px 3px 6px;
+    font-size: 12px;
+  }
+
+  @media (max-width: 576px) {
+    padding: 2px 4px 2px 4px;
+    font-size: 10px;
+  }
 }
 
 .validator__data {
@@ -159,24 +326,69 @@
   display: grid;
   grid-template-columns: 180px calc(100% - 180px);
   grid-row-gap: 10px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 140px calc(100% - 140px);
+    grid-row-gap: 6px;
+  }
+
+  @media (max-width: 576px) {
+    grid-template-columns: 120px calc(100% - 120px);
+    grid-row-gap: 6px;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 100px calc(100% - 120px);
+    grid-row-gap: 4px;
+  }
 }
 
 .validator__data-heading {
   font-weight: 500;
   font-size: 16px;
   color: $gray-darker;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 12px;
+  }
+
+  @media (max-width: 480px) {
+    margin: 1px 0 0 0;
+    font-size: 10px;
+  }
 }
 
 .validator__data-text {
   font-weight: 400;
   font-size: 16px;
   color: $gray-darker;
+  word-wrap: break-word;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 12px;
+  }
 }
 
 .validator__denom {
   margin: 0 0 0 4px;
   font-size: 14px;
   color: $gray-light;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 10px;
+  }
 }
 
 .validator__data-link {
@@ -187,5 +399,13 @@
 
   &:hover {
     color: $color-accent;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 12px;
   }
 }
