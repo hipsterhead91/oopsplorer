@@ -72,7 +72,7 @@ function Validators() {
     setShownValidatorsBackup(inactiveValidators);
     setIsCurrentSetActive(false);
   }
-
+  
   // СКРОЛЛИМ СТРАНИЦУ ВВЕРХ
   const scrollToTop = () => {
     window.scrollTo({

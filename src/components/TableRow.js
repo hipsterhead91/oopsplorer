@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import noAvatar from "../images/no-avatar.png";
 import { cutDecimals, tweakCommission } from "../utils/formatting";
 
 function TableRow(props) {
@@ -11,7 +10,7 @@ function TableRow(props) {
   const chainPath = chain.path + '-' + network;
 
   // РЕНДЕР АВАТАРА
-  const avatarUrl = (validator.avatar) ? validator.avatar : noAvatar;
+  const avatarUrl = (validator.avatar) ? validator.avatar : `${process.env.PUBLIC_URL}/images/no-avatar.png`;
 
   // РЕНДЕР РЕЙТИНГА
   const rank = '#' + validator.rank.toString().padStart(3, '0');

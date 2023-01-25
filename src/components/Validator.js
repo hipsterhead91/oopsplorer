@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useOutletContext, Link } from "react-router-dom";
-import noAvatar from "../images/no-avatar.png";
 import { cutDecimals, tweakCommission } from "../utils/formatting";
 
 function Validator() {
@@ -20,7 +19,7 @@ function Validator() {
   let [avatar, rank, moniker, valoper, activity, activityStyle, bond, bondStyle, jail, jailStyle, highCommission, highCommissionStyle, stake, symbol, votingPower, commission, website, securityContact, details] = '';
 
   if (validator === undefined) {
-    avatar = noAvatar;
+    avatar = `${process.env.PUBLIC_URL}/images/no-avatar.png`;
     rank = '#000';
     moniker = "Validator Doesn't Exist";
     valoper = 'no validator operator address';
@@ -37,7 +36,7 @@ function Validator() {
   else if (validator) {
 
     // РЕНДЕР АВАТАРА
-    avatar = (validator.avatar === '') ? noAvatar : validator.avatar;
+    avatar = (validator.avatar === '') ? `${process.env.PUBLIC_URL}/images/no-avatar.png` : validator.avatar;
 
     // РЕНДЕР РЕЙТИНГА
     rank = '#' + validator.rank.toString().padStart(3, '0');
