@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/OOPSplorer/static/css/main.dea7fc9e.css",
+    "main.js": "/OOPSplorer/static/js/main.f083f9bb.js",
+    "index.html": "/OOPSplorer/index.html",
+    "main.dea7fc9e.css.map": "/OOPSplorer/static/css/main.dea7fc9e.css.map",
+    "main.f083f9bb.js.map": "/OOPSplorer/static/js/main.f083f9bb.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dea7fc9e.css",
+    "static/js/main.f083f9bb.js"
+  ]
+}
