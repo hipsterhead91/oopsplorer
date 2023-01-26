@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useOutletContext, Link } from "react-router-dom";
-import { cutDecimals, tweakCommission } from "../utils/formatting";
+import { useParams, useOutletContext, Link, useNavigate } from "react-router-dom";
+import { cutDecimals, tweakCommission, getPath } from "../utils/formatting";
 
 function Validator() {
 
@@ -9,6 +9,7 @@ function Validator() {
   const [validator, setValidator] = useState();
   const network = chain.isMain ? 'mainnet' : 'testnet';
   const chainPath = chain.path + '-' + network;
+  const navigate = useNavigate();
 
   // ПОЛУЧАЕМ ОБЪЕКТ ТЕКУЩЕГО ВАЛИДАТОРА
   useEffect(() => {
@@ -86,8 +87,15 @@ function Validator() {
     details = (validator.description.details === '') ? '—' : validator.description.details;
   }
 
+  // ЗАКРЫВАЕМ ОКНО ПО КЛИКУ НА ОВЕРЛЕЙ
+  const closeWindow = () => {
+    const path = getPath(chain);
+    navigate(`/${path}/validators`);
+  }
+
   return (
     <div className="validator">
+      <div className="validator__overlay" onClick={closeWindow}></div>
       <div className="validator__container">
         <Link to={`/${chainPath}/validators`} className="validator__close-button">&#10006;</Link>
         <div className="validator__card">

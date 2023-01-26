@@ -1,7 +1,7 @@
 .proposal {
   box-sizing: border-box;
   width: 100%;
-  padding: 20px 16px 40px 16px;
+  padding: 20px 16px 24px 16px;
   margin: 12px 0 0 0;
   background-color: $white;
   border-radius: 8px;
@@ -12,10 +12,33 @@
   font-weight: 600;
   font-size: 18px;
   color: $gray-darker;
+
+  @media (max-width: 480px) {
+    font-size: 16px;
+  }
+}
+
+.proposal__data {
+  margin: 0 0 4px 0;
+  font-size: 14px;
+
+  span {
+    font-weight: 600;
+    color: $gray-darker;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 12px;
+  }
 }
 
 .proposal__description {
+  margin: 16px 0 0 0;
   font-weight: 400;
   font-size: 14px;
   color: $gray-darker;
+
+  @media (max-width: 480px) {
+    font-size: 12px;
+  }
 }

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Outlet, useOutletContext, Link } from "react-router-dom";
+import { Outlet, useOutletContext, Link, useNavigate } from "react-router-dom";
 import CosmosRestApi from "../api/CosmosRestApi";
 import CoinsContext from "../contexts/CoinsContext";
-import { cutDecimals, cutExtra, tweakPrice, filterActive } from "../utils/formatting";
+import { cutDecimals, cutExtra, tweakPrice, filterActive, getPath } from "../utils/formatting";
 
 function Chain(props) {
 
@@ -20,13 +20,26 @@ function Chain(props) {
   const [inflation, setInflation] = useState(null);
   const [communityPool, setCommunityPool] = useState(null);
   const [price, setPrice] = useState(null);
+  const navigate = useNavigate();
 
   // ОБНОВЛЯЕМ ТЕКУЩУЮ СЕТЬ 
   // Примечание: нужно для корректного отображения сети в выпадающем меню хедера в том случае, когда переход
   // на страницу сети осуществлён не "пошагово" с главной, а вводом полного пути в адресную строку браузера.
   useEffect(() => {
     setCurrentChain(chain);
+
   }, [])
+
+  // РЕДИРЕКТ НА ВАЛИДАТОРОВ
+  // Примечание: при переходе по адресу типа site/chain делает редирект на site/chain/validators, поскольку 
+  // страница только с компонентом chain выглядит полупустой.
+  useEffect(() => {
+    const path = getPath(chain);
+    const currentUrl = window.location.href;
+    if (currentUrl.endsWith(path) || currentUrl.endsWith(`${path}/`)) {
+      navigate(`/${path}/validators`);
+    }
+  }, [chain])
 
   // ПОЛУЧАЕМ КОЛИЧЕСТВО ВАЛИДАТОРОВ
   useEffect(() => {
@@ -157,7 +170,7 @@ function Chain(props) {
   let proposalsEl = errorEl;
   if (activeProposals && activeProposals.length !== 0) {
     proposalsEl = <Link to="proposals" className="chain__plate-link">{activeProposals.length} active</Link>;
-  } 
+  }
   else if (activeProposals && activeProposals.length === 0) {
     proposalsEl = <span className="chain__plate-data">none</span>;
   }

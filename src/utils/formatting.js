@@ -95,3 +95,32 @@ export function filterInactive(validators) {
 export function tweakCommission(commission) {
   return (Number(commission) * 100).toFixed(2)
 }
+
+// ОТФОРМАТИРОВАТЬ ТИП ПРОПОЗАЛА
+// Примечание: принимает строку, возвращает строку.
+export function tweakProposalType(type) {
+  const arr = type.split('.');
+  const i = arr.length - 1;
+  type = arr[i];
+  type = type.replace(/([a-z])([A-Z])/g, '$1 $2');
+  return type;
+}
+
+// ОТФОРМАТИРОВАТЬ СТАТУС ПРОПОЗАЛА
+// Примечание: принимает строку, возвращает строку.
+export function tweakProposalStatus(status) {
+  if (status === 'PROPOSAL_STATUS_UNSPECIFIED') { return 'Unspecified' }
+  if (status === 'PROPOSAL_STATUS_DEPOSIT_PERIOD') { return 'Deposit Period' }
+  if (status === 'PROPOSAL_STATUS_VOTING_PERIOD') { return 'Voting Period' }
+  if (status === 'PROPOSAL_STATUS_PASSED') { return 'Passed' }
+  if (status === 'PROPOSAL_STATUS_REJECTED') { return 'Rejected' }
+  if (status === 'PROPOSAL_STATUS_FAILED') { return 'Failed' }
+}
+
+// ОТФОРМАТИРОВАТЬ ДАТУ ПРОПОЗАЛА
+// Примечание: принимает строку, возвращает строку.
+export function tweakProposalPeriod(period) {
+  const date = period.split('T')[0];
+  const time = period.split('T')[1].split('.')[0];
+  return date + ', ' + time;
+}

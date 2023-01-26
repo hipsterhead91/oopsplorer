@@ -11,6 +11,35 @@
   font-weight: 700;
   font-size: 24px;
   color: $gray-darker;
+
+  @media (max-width: 480px) {
+    font-size: 20px;
+  }
+}
+
+.proposals__note {
+  box-sizing: border-box;
+  max-width: 50%;
+  padding: 8px 16px 8px 16px;
+  margin: 4px 0 0 0;
+  font-weight: 400;
+  font-size: 14px;
+  color: $color-accent;
+  background-color: $gray-lightest;
+  border: 1px solid $gray-lighter;
+  border-radius: 8px;
+
+  span {
+    font-weight: 700;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 12px;
+  }
 }
 
 .proposals__no-proposals {
