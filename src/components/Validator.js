@@ -90,14 +90,14 @@ function Validator() {
   // ЗАКРЫВАЕМ ОКНО ПО КЛИКУ НА ОВЕРЛЕЙ
   const closeWindow = () => {
     const path = getPath(chain);
-    navigate(`/oopsplorer/${path}/validators`);
+    navigate(`/${path}/validators`);
   }
 
   return (
     <div className="validator">
       <div className="validator__overlay" onClick={closeWindow}></div>
       <div className="validator__container">
-        <Link to={`/oopsplorer/${chainPath}/validators`} className="validator__close-button">&#10006;</Link>
+        <Link to={`/${chainPath}/validators`} className="validator__close-button">&#10006;</Link>
         <div className="validator__card">
           <div style={{ backgroundImage: `url(${avatar})` }} className="validator__avatar" />
           <div className="validator__header">
