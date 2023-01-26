@@ -53,7 +53,7 @@ function TableRow(props) {
         <div className="table-row__info">
           <div className="table-row__main-info">
             <span className="table-row__rank">{rank}</span>
-            <Link to={`/${chainPath}/validators/${validator.operator_address}`} state={validator} className="table-row__moniker">{moniker}</Link>
+            <Link to={`/oopsplorer/${chainPath}/validators/${validator.operator_address}`} state={validator} className="table-row__moniker">{moniker}</Link>
           </div>
           <div className="table-row__statuses">
             <span className={activityStyle}>{activity}</span>

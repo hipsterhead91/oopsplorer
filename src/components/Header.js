@@ -35,7 +35,7 @@ function Header(props) {
   return (
     <header className="header">
       <div className="header__container">
-        <Link to="/" onClick={() => { switchChain(null) }} className="header__logo">
+        <Link to="/oopsplorer" onClick={() => { switchChain(null) }} className="header__logo">
           <div className="header__logo-top"><span>Oops!</span>plorer</div>
           <div className="header__logo-bottom">humblest blockchain explorer ever</div>
         </Link>
@@ -47,7 +47,7 @@ function Header(props) {
           <div ref={chainList} className="header__chain-list header__chain-list_hidden">
             <div className="header__chain-list-container">
               {chains.map(chain => {
-                return <NavLink key={chain.chain} to={`/${getPath(chain)}/validators`} onClick={() => { switchChain(chain) }} className={chainButtonStyle}>
+                return <NavLink key={chain.chain} to={`/oopsplorer/${getPath(chain)}/validators`} onClick={() => { switchChain(chain) }} className={chainButtonStyle}>
                   {`${chain.name} ${chain.isMain ? '' : 'Testnet'}`} <span>({chain.chain})</span>
                 </NavLink>
               })}

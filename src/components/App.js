@@ -37,7 +37,7 @@ function App() {
       <CoinsContext.Provider value={coins}>
         <CurrentChainContext.Provider value={currentChain}>
           <Routes>
-            <Route path="/" element={<Layout setCurrentChain={setCurrentChain} />}>
+            <Route path="/oopsplorer" element={<Layout setCurrentChain={setCurrentChain} />}>
 
               <Route index element={<Homepage />} />
               <Route path="*" element={<NotFound />} />

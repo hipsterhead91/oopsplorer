@@ -36,7 +36,7 @@ function Chain(props) {
     const path = getPath(chain);
     const currentUrl = window.location.href;
     if (currentUrl.endsWith(path) || currentUrl.endsWith(`${path}/`)) {
-      navigate(`/${path}/validators`);
+      navigate(`/oopsplorer/${path}/validators`);
     }
   }, [chain])
 
