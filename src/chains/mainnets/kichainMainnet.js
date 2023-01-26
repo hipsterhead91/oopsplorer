@@ -14,7 +14,7 @@ const kichainMainnet = {
     "https://api.ki.nodestake.top"
   ],
   description: "Open-source, public blockchain designed to enable decentralized finance, built with the Cosmos SDK.",
-  logo: "/logos/kichain.png"
+  logo: "/oopsplorer/logos/kichain.png"
 }
 
 export default kichainMainnet;

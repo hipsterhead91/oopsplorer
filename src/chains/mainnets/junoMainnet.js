@@ -14,7 +14,7 @@ const junoMainnet = {
     "https://lcd-juno.itastakers.com"
   ],
   description: "Juno is an interoperable smart contract network. Highly scalable, robust, secure and easy to deploy.",
-  logo: "/logos/juno.png"
+  logo: "/oopsplorer/logos/juno.png"
 }
 
 export default junoMainnet;

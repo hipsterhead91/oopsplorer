@@ -14,7 +14,7 @@ const cosmosMainnet = {
     "https://cosmos.api.ping.pub"
   ],
   description: "The Cosmos Hub is an Internet of Blockchains, a network of blockchains able to communicate with each other in a decentralized way.",
-  logo: "/logos/cosmos.png"
+  logo: "/oopsplorer/logos/cosmos.png"
 }
 
 export default cosmosMainnet;

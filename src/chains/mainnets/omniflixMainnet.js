@@ -13,7 +13,7 @@ const omniflixMainnet = {
     "https://omniflixhub-api.skynetvalidators.com"
   ],
   description: "A network specifically designed for creators and communities, powered by NFTs.",
-  logo: "/logos/omniflix.png"
+  logo: "/oopsplorer/logos/omniflix.png"
 }
 
 export default omniflixMainnet;

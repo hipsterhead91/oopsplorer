@@ -15,7 +15,7 @@ const osmosisMainnet = {
     "https://lcd-osmosis.blockapsis.com"
   ],
   description: "The interchain AMM powered by the Cosmos Inter-Blockchain Communication protocol.",
-  logo: "/logos/osmosis.png"
+  logo: "/oopsplorer/logos/osmosis.png"
 }
 
 export default osmosisMainnet;

@@ -15,7 +15,7 @@ const akashMainnet = {
     "https://akash.api.ping.pub"
   ],
   description: "The world first decentralized open source cloud, and DeCloud for DeFi, built with the Cosmos SDK.",
-  logo: "/logos/akash.png"
+  logo: "/oopsplorer/logos/akash.png"
 }
 
 export default akashMainnet;
