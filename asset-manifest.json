@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/oopsplorer/static/css/main.dea7fc9e.css",
-    "main.js": "/oopsplorer/static/js/main.6bd7f732.js",
+    "main.js": "/oopsplorer/static/js/main.5f2c02e3.js",
     "index.html": "/oopsplorer/index.html",
     "main.dea7fc9e.css.map": "/oopsplorer/static/css/main.dea7fc9e.css.map",
-    "main.6bd7f732.js.map": "/oopsplorer/static/js/main.6bd7f732.js.map"
+    "main.5f2c02e3.js.map": "/oopsplorer/static/js/main.5f2c02e3.js.map"
   },
   "entrypoints": [
     "static/css/main.dea7fc9e.css",
-    "static/js/main.6bd7f732.js"
+    "static/js/main.5f2c02e3.js"
   ]
 }
